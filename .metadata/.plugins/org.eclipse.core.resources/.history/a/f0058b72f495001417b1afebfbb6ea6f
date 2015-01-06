@@ -31,7 +31,5 @@ public class AreaOfACircle
 		 */
 		System.out.println("The area of your circle is " + PI * radius * radius + 
 				" in whatever units you are using.");
-		
-		input.close();
 	}
 }
