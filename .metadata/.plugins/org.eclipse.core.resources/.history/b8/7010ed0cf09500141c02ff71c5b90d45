@@ -1,10 +1,5 @@
 package PR1_2;
 
-/**
- * 
- * @author Joseph
- *
- */
 public class IteratingTheArguments {
 
 	public static void main(String[] args) {

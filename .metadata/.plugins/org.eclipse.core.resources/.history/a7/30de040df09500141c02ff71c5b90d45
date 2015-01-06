@@ -1,12 +1,6 @@
 package PR1_6;
 import java.util.*;
 
-/**
- * 
- * @author Joseph
- *
- */
-
 public class PrimeNumbers {
 
 	public static void main(String[]  args)
@@ -30,7 +24,7 @@ public class PrimeNumbers {
 		 * have excluded it from my program. And I couldn't get the algorithm to work to 
 		 * print out 1 as a prime. 
 		 * 
-		 * <code>System.out.println("1 is a prime.");<\code>
+		 * System.out.println("1 is a prime.");
 		 */
 		
 		
