@@ -1,0 +1,20 @@
+package ex2_3;
+
+public class PR1_1 {
+
+	public static int i;
+	public static float f;
+	public static boolean b;
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		PR1_1
+		
+		d.i = 47;
+		d.f = 1.1f;
+		d.b = false;
+		
+		System.out.printf();
+	}
+
+}
