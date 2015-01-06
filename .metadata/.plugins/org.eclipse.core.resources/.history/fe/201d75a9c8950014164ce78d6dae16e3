@@ -9,8 +9,7 @@ public class PrimeNumbers {
 		 * create new scanner object
 		 */
 		Scanner input = new Scanner(System.in);
-
-
+		
 		/**
 		 * Ask the user for an upper bound
 		 */
@@ -54,11 +53,9 @@ public class PrimeNumbers {
 		}
 		
 		/**
-		 * Tells the system that it is done
+		 * Tells the system to be done
 		 */
 		System.out.println("Done...................\n");
-		
-
 
 		/**
 		 * Close input. 

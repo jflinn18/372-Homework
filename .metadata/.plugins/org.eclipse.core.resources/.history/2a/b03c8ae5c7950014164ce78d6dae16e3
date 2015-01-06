@@ -9,8 +9,7 @@ public class PrimeNumbers {
 		 * create new scanner object
 		 */
 		Scanner input = new Scanner(System.in);
-
-
+		
 		/**
 		 * Ask the user for an upper bound
 		 */
@@ -29,7 +28,7 @@ public class PrimeNumbers {
 		
 		
 		/**
-		 * Check all of the numbers between 2 and the upper bound to see if dividing it 
+		 * Check all of the numbers between 1 and the upper bound to see if dividing it 
 		 * will yield another factor other than one and itself
 		 */
 		for (int i = 2; i <= upperbound; i++)
@@ -39,30 +38,18 @@ public class PrimeNumbers {
 			 */
 			for (int j = 2; j <= i; j++) 
 			{
-				/**
-				 * if j iterates through until it equals i without moding and equalling 0,
-				 * j is a prime number
-				 */
 				if (i == j)
 				{
 					System.out.println(i + " is a prime.");
-					continue; // stop checking this number
+					continue;
 				}
 				if (i % j == 0)
 					break;
 			}
 		}
 		
-		/**
-		 * Tells the system that it is done
-		 */
 		System.out.println("Done...................\n");
-		
 
-
-		/**
-		 * Close input. 
-		 */
 		input.close();
 	}
 }
