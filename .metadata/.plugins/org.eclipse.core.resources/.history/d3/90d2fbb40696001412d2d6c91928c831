@@ -1,7 +1,7 @@
 package PI;
 
 /**
- * Calculates PI to a given accuracy using a given equation
+ * 
  * @author Joseph
  *
  */

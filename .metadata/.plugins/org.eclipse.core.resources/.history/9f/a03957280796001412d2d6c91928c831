@@ -2,8 +2,7 @@ package PR1_5;
 import java.util.*;
 
 /**
- * Picks 25 random integers and prints if all of them are greater, less, or equal to the 
- * second one.
+ * 
  * @author Joseph
  *
  */

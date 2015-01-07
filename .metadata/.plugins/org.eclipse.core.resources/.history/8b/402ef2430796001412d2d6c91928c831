@@ -2,8 +2,7 @@ package PR1_6;
 import java.util.*;
 
 /**
- * It asks for an upper bound and prints all of the prime numbers between 0 and that 
- * upper bound.
+ * 
  * @author Joseph
  *
  */

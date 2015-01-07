@@ -1,7 +1,7 @@
 package PI;
 
 /**
- * Prints out a table of different accuracies of pi.
+ * 
  * @author Joseph
  *
  */
@@ -24,14 +24,9 @@ public class MathPI {
 		double pi = CalculatePI.calcPI(times);
 		
 		/**
-		 * Prints out the table of resulting calculations
+		 * Prints out the result of the calculation
 		 */
-		
-		for (int i = 0; i < times; i++)
-		{
-			pi = CalculatePI.calcPI(times);
-			System.out.printf("PI to the " + times + " is " + pi + "\n");
-		}
+		System.out.printf("PI to the " + times + " is " + pi + "\n");
 
 	}
 }
