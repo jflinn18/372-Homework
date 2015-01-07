@@ -1,0 +1,20 @@
+package PI;
+import java.util.*;
+
+public class MathPI {
+
+	public static void main(String[] args)
+	{
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.printf("How far do you want to go into the series? ");
+		int resp = scan.nextInt();
+		
+		CalculatePI cp = new CalculatePI();
+		
+		cp.calcPI(resp);
+		
+		
+		scan.close();
+	}
+}

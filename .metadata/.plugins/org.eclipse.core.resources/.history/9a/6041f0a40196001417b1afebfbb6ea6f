@@ -1,0 +1,16 @@
+package PI;
+
+public class CalculatePI {
+
+	public static double PI;
+	
+	public static double calcPI(int times)
+	{
+		for (int i = 0; i < times; i++)
+		{
+			PI = 4/(i+(i-1));
+		}
+		
+		return PI;
+	}
+}
