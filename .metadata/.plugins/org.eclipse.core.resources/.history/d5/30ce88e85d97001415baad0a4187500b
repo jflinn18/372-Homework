@@ -35,7 +35,7 @@ public class MathPI {
 		for (int i = 1; i <= times; i++)
 		{
 			pi = cp.calcPI(i);
-			System.out.printf("PI to the " + i + " is " + pi 
+			System.out.printf("PI to the " + (i + 1) + " is " + pi 
 					  + "\n");
 		}
 

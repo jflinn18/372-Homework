@@ -34,14 +34,11 @@ public class HoppingGerbilsMap {
 		Set<String> s = map.keySet();
 		
 		/**
-		 * Creates an iterator to iterate through the set of map keys.
+		 * Creates a 
 		 */
 		
 		Iterator<String> it = s.iterator();
 	
-		/**
-		 * While the set has another key in the set, get that key's value (Gerbil) and make it hop
-		 */
 		while (it.hasNext())
 			map.get(it.next()).hop();
 		

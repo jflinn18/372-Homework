@@ -1,0 +1,37 @@
+package Gerbil;
+import java.util.*;
+
+/**
+ * Uses a Map instead of an Array or ArrayList
+ * @author Joseph
+ *
+ */
+public class HoppingGerbilsMap {
+
+	public static void main(String[] args)
+	{
+		
+		/**
+		 * Creates a new HashMap Object
+		 */
+		HashMap<String, Gerbil> map = new HashMap<String, Gerbil>();
+		
+		/**
+		 * Creates 25 
+		 */
+		
+		for (int i = 0; i < 25; i++)
+		{
+			String key = "Gerbil #" + i;
+			map.put(key, new Gerbil(i));
+		}
+		
+		for (int i = 0; i < 25; i++)
+		{
+			String key = "Gerbil #" + i;
+			map.get(key).hop();
+		}
+		
+		
+	}
+}
