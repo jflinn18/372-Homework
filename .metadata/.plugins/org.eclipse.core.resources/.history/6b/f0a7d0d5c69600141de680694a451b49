@@ -1,8 +1,7 @@
 package Gerbil;
 
 /**
- * The Gerbil class that includes the gerbil number and a hopping function 
- * that makes the gerbil hop.
+ * 
  * @author Joseph
  *
  */
@@ -20,7 +19,7 @@ public class Gerbil {
 	 * @param i
 	 */
 	
-	public Gerbil(int i){gerbilNumber = i + 1;}
+	public Gerbil(int i){gerbilNumber = i;}
 	
 	public int getGNum(){return gerbilNumber;}
 	
@@ -28,8 +27,9 @@ public class Gerbil {
 	 * Prints which Gerbil is hopping
 	 */
 	
-	public void hop()
+	public static void hop(Object o)
 	{
-		System.out.printf("This is gerbil #%d\nGerbil #%d is hopping!\n\n", getGNum(), getGNum());
+		Gerbil g = (Gerbil)o;
+		System.out.printf("Gerbil #%d is hopping!", g.getGNum());
 	}
 }

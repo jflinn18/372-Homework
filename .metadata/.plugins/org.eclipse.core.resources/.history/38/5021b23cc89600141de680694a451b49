@@ -1,0 +1,21 @@
+package Gerbil;
+import java.util.*;
+
+public class HoppingGerbils {
+
+	public static void main(String[] args)
+	{
+		ArrayList<Gerbil> gerbils = new ArrayList<Gerbil>();
+		
+		for (int i = 0; i < 25; i++)
+			gerbils.add(new Gerbil(i));
+		
+		for (int i = 0; i < 25; i++)
+		{
+			System.out.printf("This is gerbil #%d", gerbils.get(i));
+			gerbils.get(i).hop();
+		}
+		
+		
+	}
+}

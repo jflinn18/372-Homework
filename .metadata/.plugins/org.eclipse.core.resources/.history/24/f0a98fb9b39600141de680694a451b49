@@ -1,6 +1,5 @@
 package PI;
 
-
 /**
  * Calculates PI to a given accuracy using a given equation
  * @author Joseph
@@ -8,11 +7,11 @@ package PI;
  */
 
 public class CalculatePI {
+
+	public static double PI;
 	
-	public double calcPI(int times)
+	public static double calcPI(int times)
 	{
-	    double PI = 0;
-	    
 		for (int i = 1; i <= times; i++)
 		{
 			/**

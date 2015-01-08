@@ -17,26 +17,20 @@ public class MathPI {
 		
 		int times;
 		times = Integer.parseInt(argument);
-
-		CalculatePI cp = new CalculatePI();
-
 		
 		/**
 		 * calls the static method from the CalculatePI class
 		 */
-		double pi = cp.calcPI(times);
+		double pi = CalculatePI.calcPI(times);
 		
-		System.out.println("Pi to the " + times + " is " + pi + 
-				   "\n");
 		/**
 		 * Prints out the table of resulting calculations
 		 */
 		
-		for (int i = 1; i <= times; i++)
+		for (int i = 0; i < times; i++)
 		{
-			pi = cp.calcPI(i);
-			System.out.printf("PI to the " + (i + 1) + " is " + pi 
-					  + "\n");
+			pi = CalculatePI.calcPI(times);
+			System.out.printf("PI to the " + times + " is " + pi + "\n");
 		}
 
 	}
