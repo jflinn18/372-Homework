@@ -60,16 +60,19 @@ public class CookieSalesGUI extends JFrame {
 		contentPane.setLayout(null);
 		
 		samoaTextField = new JTextField();
+		samoaTextField.setText("0");
 		samoaTextField.setBounds(40, 47, 57, 20);
 		contentPane.add(samoaTextField);
 		samoaTextField.setColumns(10);
 		
 		thinMintsTextField = new JTextField();
+		thinMintsTextField.setText("0");
 		thinMintsTextField.setBounds(40, 104, 57, 20);
 		contentPane.add(thinMintsTextField);
 		thinMintsTextField.setColumns(10);
 		
 		chocolateChipTextField = new JTextField();
+		chocolateChipTextField.setText("0");
 		chocolateChipTextField.setBounds(40, 164, 57, 20);
 		contentPane.add(chocolateChipTextField);
 		chocolateChipTextField.setColumns(10);
@@ -135,24 +138,9 @@ public class CookieSalesGUI extends JFrame {
 		JButton btnAdd = new JButton("Add...");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int samoa;
-				int thinMints;
-				int chocolateChip;
-				
-				if(samoaTextField.getText().equals(""))
-					samoa = 0;
-				else
-					samoa = Integer.parseInt(samoaTextField.getText());
-				
-				if (thinMintsTextField.getText().equals(""))
-					thinMints = 0;
-				else
-					thinMints = Integer.parseInt(thinMintsTextField.getText());
-				
-				if (chocolateChipTextField.getText().equals(""))
-					chocolateChip = 0;
-				else
-					chocolateChip = Integer.parseInt(chocolateChipTextField.getText());
+				int samoa = Integer.parseInt(samoaTextField.getText());
+				int thinMints = Integer.parseInt(thinMintsTextField.getText());
+				int chocolateChip = Integer.parseInt(chocolateChipTextField.getText());
 			
 				cs.addSales(samoa, thinMints, chocolateChip);
 				

@@ -135,25 +135,29 @@ public class CookieSalesGUI extends JFrame {
 		JButton btnAdd = new JButton("Add...");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int samoa;
+				int samoa; 
 				int thinMints;
 				int chocolateChip;
 				
-				if(samoaTextField.getText().equals(""))
-					samoa = 0;
-				else
+				/**
+				 * If user doesn't enter a value, assigns 0 to that variable
+				 */
+				if (samoaTextField.getText() != "")
 					samoa = Integer.parseInt(samoaTextField.getText());
+				else 
+					samoa = 0;
 				
-				if (thinMintsTextField.getText().equals(""))
-					thinMints = 0;
-				else
+				if (thinMintsTextField.getText() != "")
 					thinMints = Integer.parseInt(thinMintsTextField.getText());
-				
-				if (chocolateChipTextField.getText().equals(""))
-					chocolateChip = 0;
 				else
+					thinMints = 0;
+				
+				if (chocolateChipTextField.getText() != "")
 					chocolateChip = Integer.parseInt(chocolateChipTextField.getText());
-			
+				else
+					chocolateChip = 0;
+				
+				
 				cs.addSales(samoa, thinMints, chocolateChip);
 				
 				String f = String.format("%d", cs.getSamoaCount());

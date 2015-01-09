@@ -8,10 +8,6 @@ import java.util.*;
  */
 public class HoppingGerbils2 {
 
-	/**
-	 * Launch the Application
-	 * @param args
-	 */
 	public static void main(String[] args)
 	{
 		ArrayList<Gerbil> gerbils = new ArrayList<Gerbil>();

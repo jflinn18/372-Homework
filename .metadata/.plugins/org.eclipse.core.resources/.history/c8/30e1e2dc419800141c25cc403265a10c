@@ -13,9 +13,7 @@ public class CookieSales {
 	private int _thinMintsCount;
 	private int _chocolateChipCount;
 	
-	/**
-	 * Constructor to initialize the member variables
-	 */
+	
 	public CookieSales()
 	{
 		_totalSales = 0;

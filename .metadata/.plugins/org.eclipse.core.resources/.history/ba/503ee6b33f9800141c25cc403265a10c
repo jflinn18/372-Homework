@@ -8,10 +8,6 @@ package PI;
 
 public class MathPI {
 
-	/**
-	 * Launch the Application
-	 * @param args
-	 */
 	public static void main(String[] args)
 	{
 		String argument = "";

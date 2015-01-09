@@ -9,10 +9,6 @@ import java.util.*;
  */
 public class HoppingGerbils {
 
-	/**
-	 * Launch the Application
-	 * @param args
-	 */
 	public static void main(String[] args)
 	{
 		/**

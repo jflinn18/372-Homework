@@ -26,11 +26,6 @@ public class Gerbil {
 	 */
 	public Gerbil(int i){gerbilNumber = i + 1;}
 	
-	/**
-	 * Get function
-	 * @return
-	 */
-	
 	public int getGNum(){return gerbilNumber;}
 	
 	/**

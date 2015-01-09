@@ -10,10 +10,6 @@ import java.util.*;
  */
 public class HoppingGerbilsMap {
 
-	/**
-	 * Launch the Application
-	 * @param args
-	 */
 	public static void main(String[] args)
 	{
 		

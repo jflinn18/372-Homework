@@ -8,24 +8,13 @@ package Cookie_Sales;
  */
 public class CookieSales {
 	
-	private int _totalSales;
-	private int _samoaCount;
-	private int _thinMintsCount;
-	private int _chocolateChipCount;
+	private int _totalSales = 0;
+	private int _samoaCount = 0;
+	private int _thinMintsCount = 0;
+	private int _chocolateChipCount = 0;
 	
 	/**
-	 * Constructor to initialize the member variables
-	 */
-	public CookieSales()
-	{
-		_totalSales = 0;
-		_samoaCount = 0;
-		_thinMintsCount = 0;
-		_chocolateChipCount = 0;
-	}
-	
-	/**
-	 * Adds the number of types of cookies to their counters
+	 * Adds the number of types of cookies to thier counters
 	 * Adds the right amount of money to the total sales from all cookies
 	 * @param s
 	 * @param t
@@ -43,45 +32,20 @@ public class CookieSales {
 	}
 	
 	/**
-	 * Sets the total sales
-	 * @param total
+	 * Set functions for all member variables
 	 */
+	
 	public void setTotal(int total) { _totalSales += total; }
-	/**
-	 * Sets the count for Samoa cookies
-	 * @param i
-	 */
 	public void setSamoaCount(int i) { _samoaCount += i; }
-	/**
-	 * Sets the count for ThinMints cookies
-	 * @param i
-	 */
 	public void setThinMintsCount(int i) { _thinMintsCount += i; }
-	/**
-	 * Sets the count for ChocoateChip Cookies
-	 * @param i
-	 */
 	public void setChocolateChipCount(int i) { _chocolateChipCount += i; }
 	
+	/**
+	 * Get functions for all member variables
+	 */
 	
-	/**
-	 * Get function for the total sales
-	 * @return
-	 */
 	public int getTotal() { return _totalSales; }
-	/**
-	 * Get function for the samoa cookies count
-	 * @return
-	 */
 	public int getSamoaCount() { return _samoaCount; }
-	/**
-	 * Get function for thin mints count
-	 * @return
-	 */
 	public int getThinMintsCount() { return _thinMintsCount; }
-	/**
-	 * Get function for chocolate chip count
-	 * @return
-	 */
 	public int getChocolateCount() { return _chocolateChipCount; }
 }
