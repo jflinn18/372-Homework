@@ -6,7 +6,7 @@ package PR1_2;
  *
  */
 public class IteratingTheArguments {
-
+	//PT: need javadocs for main. -3
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
