@@ -1,0 +1,50 @@
+package HomeworkTracker;
+
+public class HomeworkTracker {
+
+	private double _min;
+	private double _max;
+	private double _ave;
+	
+	public HomeworkTracker()
+	{
+		setMin(0);
+		setMax(0);
+		setMax(0);
+	}
+	
+	public double getMin() { return _min; }
+	public double getMax() { return _max; }
+	public double getAve() { return _ave; }
+	
+	public void setMin(double d) { _min = d; }
+	public void setMax(double d) { _max = d; }
+	public void setAve(double d) { _ave = d; }
+	
+	private void calcMin(double d)
+	{
+		if (d < getMin())
+			setMin(d);
+	}
+	
+	private void calcMax(double d)
+	{
+		if(d > getMax())
+			setMax(d);
+	}
+	
+	private void calcAve(double d)
+	{
+		double old = getAve();
+		
+		setAve((getAve() + d) / 2);
+	}
+	
+	public void updateVals(double d)
+	{
+		
+	}
+	
+	
+	
+}
