@@ -142,17 +142,17 @@ public class CookieSalesGUI extends JFrame {
 				/**
 				 * If user doesn't enter a value, assigns 0 to that variable
 				 */
-				if (samoaTextField.getText() != "")
+				if (samoaTextField.getText() != null)
 					samoa = Integer.parseInt(samoaTextField.getText());
 				else 
 					samoa = 0;
 				
-				if (thinMintsTextField.getText() != "")
+				if (thinMintsTextField.getText() != null)
 					thinMints = Integer.parseInt(thinMintsTextField.getText());
 				else
 					thinMints = 0;
 				
-				if (chocolateChipTextField.getText() != "")
+				if (chocolateChipTextField.getText() != null)
 					chocolateChip = Integer.parseInt(chocolateChipTextField.getText());
 				else
 					chocolateChip = 0;
