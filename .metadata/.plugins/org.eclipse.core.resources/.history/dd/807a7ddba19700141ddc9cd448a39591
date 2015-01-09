@@ -14,8 +14,6 @@ import javax.swing.JTextPane;
 import java.awt.Font;
 import javax.swing.border.BevelBorder;
 import java.awt.Color;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class CookieSalesGUI extends JFrame {
 
@@ -79,11 +77,6 @@ public class CookieSalesGUI extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JButton btnAdd = new JButton("Add...");
-		btnAdd.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				int samoa = Integer.parseInt();
-			}
-		});
 		btnAdd.setBounds(299, 215, 89, 23);
 		contentPane.add(btnAdd);
 		
