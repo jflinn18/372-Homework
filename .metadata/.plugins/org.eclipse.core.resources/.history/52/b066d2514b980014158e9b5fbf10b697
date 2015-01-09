@@ -9,11 +9,6 @@ package PI;
 
 public class CalculatePI {
 	
-	/**
-	 * Calculates PI using given equation
-	 * @param times
-	 * @return
-	 */
 	public double calcPI(int times)
 	{
 	    double PI = 0;

@@ -19,12 +19,18 @@ public class Gerbil {
 	 * allocates the number to the Gerbil
 	 * @param i
 	 */
+	
+	/**
+	 * Constructor
+	 * @param i
+	 */
 	public Gerbil(int i){gerbilNumber = i + 1;}
 	
 	/**
 	 * Get function
 	 * @return
 	 */
+	
 	public int getGNum(){return gerbilNumber;}
 	
 	/**

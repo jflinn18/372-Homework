@@ -34,7 +34,6 @@ public class CookieSalesGUI extends JFrame {
 
 	/**
 	 * Launch the application.
-	 * @param
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
