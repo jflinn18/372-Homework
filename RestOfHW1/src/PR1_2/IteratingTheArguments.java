@@ -14,6 +14,8 @@ public class IteratingTheArguments {
 		 * This will iterate through three arguments taken from the command line.
 		 * If there isn't any arguments in the array, it will throw an exception.
 		 */
+		 //PT: Good to check that there are at least three arguments
+		 // for (int i=0; i<3 && args.length >= 3; i++)
 		for(int i = 0; i < 3; i++)
 		{
 			System.out.println("Args[" + i + "] is " + args[i]);
