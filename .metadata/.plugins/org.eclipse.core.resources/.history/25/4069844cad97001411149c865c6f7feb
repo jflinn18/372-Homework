@@ -126,6 +126,14 @@ public class CookieSalesGUI extends JFrame {
 		contentPane.add(lblTotal_3);
 		
 		JButton btnAdd = new JButton("Add...");
+		btnAdd.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				if (arg0.getKeyCode() != KeyEvent.VK_ENTER) {return;}
+				
+				
+			}
+		});
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int samoa = Integer.parseInt(samoaTextField.getText());

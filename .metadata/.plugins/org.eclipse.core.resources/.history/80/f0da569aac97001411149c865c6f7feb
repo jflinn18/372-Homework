@@ -17,8 +17,6 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 public class CookieSalesGUI extends JFrame {
 
@@ -80,7 +78,7 @@ public class CookieSalesGUI extends JFrame {
 		contentPane.add(lblThinMints);
 		
 		JLabel lblChocolateChip = new JLabel(": Chocolate Chip");
-		lblChocolateChip.setBounds(107, 167, 126, 14);
+		lblChocolateChip.setBounds(107, 167, 86, 14);
 		contentPane.add(lblChocolateChip);
 		
 		JLabel lblTotal = new JLabel("Total Sales :   $ ");
@@ -114,15 +112,15 @@ public class CookieSalesGUI extends JFrame {
 		contentPane.add(chocolateChipTotal);
 		
 		JLabel lblTotal_1 = new JLabel("Total Sold : ");
-		lblTotal_1.setBounds(361, 50, 82, 14);
+		lblTotal_1.setBounds(361, 50, 57, 14);
 		contentPane.add(lblTotal_1);
 		
 		JLabel lblTotal_2 = new JLabel("Total Sold : ");
-		lblTotal_2.setBounds(361, 107, 82, 14);
+		lblTotal_2.setBounds(361, 107, 57, 14);
 		contentPane.add(lblTotal_2);
 		
 		JLabel lblTotal_3 = new JLabel("Total Sold : ");
-		lblTotal_3.setBounds(361, 167, 82, 14);
+		lblTotal_3.setBounds(361, 167, 57, 14);
 		contentPane.add(lblTotal_3);
 		
 		JButton btnAdd = new JButton("Add...");
@@ -143,10 +141,6 @@ public class CookieSalesGUI extends JFrame {
 				
 				f = String.format("%d", cs.getTotal());
 				totalTextPane.setText(f);
-				
-				samoaTextField.setText("");
-				thinMintsTextField.setText("");
-				chocolateChipTextField.setText("");
 			}
 		});
 		btnAdd.setBounds(29, 227, 89, 23);

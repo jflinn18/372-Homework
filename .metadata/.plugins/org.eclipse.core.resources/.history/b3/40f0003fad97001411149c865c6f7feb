@@ -17,8 +17,6 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 public class CookieSalesGUI extends JFrame {
 
@@ -143,10 +141,6 @@ public class CookieSalesGUI extends JFrame {
 				
 				f = String.format("%d", cs.getTotal());
 				totalTextPane.setText(f);
-				
-				samoaTextField.setText("");
-				thinMintsTextField.setText("");
-				chocolateChipTextField.setText("");
 			}
 		});
 		btnAdd.setBounds(29, 227, 89, 23);

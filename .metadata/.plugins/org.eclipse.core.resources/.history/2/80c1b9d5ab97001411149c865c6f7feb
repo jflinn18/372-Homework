@@ -17,8 +17,6 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 public class CookieSalesGUI extends JFrame {
 
@@ -50,7 +48,7 @@ public class CookieSalesGUI extends JFrame {
 	 */
 	public CookieSalesGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 563, 344);
+		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -80,17 +78,17 @@ public class CookieSalesGUI extends JFrame {
 		contentPane.add(lblThinMints);
 		
 		JLabel lblChocolateChip = new JLabel(": Chocolate Chip");
-		lblChocolateChip.setBounds(107, 167, 126, 14);
+		lblChocolateChip.setBounds(107, 167, 86, 14);
 		contentPane.add(lblChocolateChip);
 		
-		JLabel lblTotal = new JLabel("Total Sales :   $ ");
+		JLabel lblTotal = new JLabel("Total Sales : ");
 		lblTotal.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblTotal.setBounds(319, 249, 99, 14);
+		lblTotal.setBounds(233, 236, 82, 14);
 		contentPane.add(lblTotal);
 		
 		JTextPane totalTextPane = new JTextPane();
 		totalTextPane.setBorder(new LineBorder(Color.LIGHT_GRAY));
-		totalTextPane.setBounds(417, 249, 82, 20);
+		totalTextPane.setBounds(325, 230, 82, 20);
 		contentPane.add(totalTextPane);
 		
 		JLabel lblGirlScoutCookies = new JLabel("Girl Scout Cookies Sales ");
@@ -100,29 +98,29 @@ public class CookieSalesGUI extends JFrame {
 		
 		JTextPane samoaTotal = new JTextPane();
 		samoaTotal.setBorder(new LineBorder(Color.LIGHT_GRAY));
-		samoaTotal.setBounds(453, 47, 46, 20);
+		samoaTotal.setBounds(325, 47, 46, 20);
 		contentPane.add(samoaTotal);
 		
-		JTextPane thinMintsTotal = new JTextPane();
-		thinMintsTotal.setBorder(new LineBorder(Color.LIGHT_GRAY));
-		thinMintsTotal.setBounds(453, 104, 46, 20);
-		contentPane.add(thinMintsTotal);
+		JTextPane thinMintsTextPane = new JTextPane();
+		thinMintsTextPane.setBorder(new LineBorder(Color.LIGHT_GRAY));
+		thinMintsTextPane.setBounds(325, 104, 46, 20);
+		contentPane.add(thinMintsTextPane);
 		
-		JTextPane chocolateChipTotal = new JTextPane();
-		chocolateChipTotal.setBorder(new LineBorder(Color.LIGHT_GRAY));
-		chocolateChipTotal.setBounds(453, 164, 46, 20);
-		contentPane.add(chocolateChipTotal);
+		JTextPane textPane = new JTextPane();
+		textPane.setBorder(new LineBorder(Color.LIGHT_GRAY));
+		textPane.setBounds(325, 164, 46, 20);
+		contentPane.add(textPane);
 		
 		JLabel lblTotal_1 = new JLabel("Total Sold : ");
-		lblTotal_1.setBounds(361, 50, 82, 14);
+		lblTotal_1.setBounds(258, 50, 57, 14);
 		contentPane.add(lblTotal_1);
 		
 		JLabel lblTotal_2 = new JLabel("Total Sold : ");
-		lblTotal_2.setBounds(361, 107, 82, 14);
+		lblTotal_2.setBounds(258, 107, 57, 14);
 		contentPane.add(lblTotal_2);
 		
 		JLabel lblTotal_3 = new JLabel("Total Sold : ");
-		lblTotal_3.setBounds(361, 167, 82, 14);
+		lblTotal_3.setBounds(258, 167, 57, 14);
 		contentPane.add(lblTotal_3);
 		
 		JButton btnAdd = new JButton("Add...");
@@ -134,19 +132,7 @@ public class CookieSalesGUI extends JFrame {
 				
 				cs.addSales(samoa, thinMints, chocolateChip);
 				
-				String f = String.format("%d", cs.getSamoaCount());
-				samoaTotal.setText(f);
-				f = String.format("%d", cs.getThinMintsCount());
-				thinMintsTotal.setText(f);
-				f = String.format("%d", cs.getChocolateCount());
-				chocolateChipTotal.setText(f);
 				
-				f = String.format("%d", cs.getTotal());
-				totalTextPane.setText(f);
-				
-				samoaTextField.setText("");
-				thinMintsTextField.setText("");
-				chocolateChipTextField.setText("");
 			}
 		});
 		btnAdd.setBounds(29, 227, 89, 23);

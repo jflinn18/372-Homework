@@ -126,6 +126,32 @@ public class CookieSalesGUI extends JFrame {
 		contentPane.add(lblTotal_3);
 		
 		JButton btnAdd = new JButton("Add...");
+		btnAdd.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				if (arg0.getKeyCode() != KeyEvent.VK_ENTER) {return;}
+				
+				int samoa = Integer.parseInt(samoaTextField.getText());
+				int thinMints = Integer.parseInt(thinMintsTextField.getText());
+				int chocolateChip = Integer.parseInt(chocolateChipTextField.getText());
+				
+				cs.addSales(samoa, thinMints, chocolateChip);
+				
+				String f = String.format("%d", cs.getSamoaCount());
+				samoaTotal.setText(f);
+				f = String.format("%d", cs.getThinMintsCount());
+				thinMintsTotal.setText(f);
+				f = String.format("%d", cs.getChocolateCount());
+				chocolateChipTotal.setText(f);
+				
+				f = String.format("%d", cs.getTotal());
+				totalTextPane.setText(f);
+				
+				samoaTextField.setText("");
+				thinMintsTextField.setText("");
+				chocolateChipTextField.setText("");
+			}
+		});
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int samoa = Integer.parseInt(samoaTextField.getText());
