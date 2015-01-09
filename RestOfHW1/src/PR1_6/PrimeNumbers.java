@@ -10,6 +10,7 @@ import java.util.*;
 
 public class PrimeNumbers {
 
+//PT: need javadoc. -2
 	public static void main(String[]  args)
 	{
 		/**
