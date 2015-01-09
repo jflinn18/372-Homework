@@ -27,9 +27,6 @@ public class CookieSalesGUI extends JFrame {
 	private JTextField thinMintsTextField;
 	private JTextField chocolateChipTextField;
 	
-	/**
-	 * Creation of the CookieSales Object
-	 */
 	private CookieSales cs = new CookieSales();
 
 	/**
@@ -128,10 +125,6 @@ public class CookieSalesGUI extends JFrame {
 		lblTotal_3.setBounds(361, 167, 82, 14);
 		contentPane.add(lblTotal_3);
 		
-		
-		/**
-		 * Handles everything that needs to be done when the "Add..." button is pressed.
-		 */
 		JButton btnAdd = new JButton("Add...");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

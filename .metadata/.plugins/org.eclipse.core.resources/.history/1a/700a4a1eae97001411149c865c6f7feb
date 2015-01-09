@@ -15,7 +15,7 @@ public class CookieSales {
 	
 	/**
 	 * Adds the number of types of cookies to thier counters
-	 * Adds the right amount of money to the total sales from all cookies
+	 * Adds the right amount of money to the total sales
 	 * @param s
 	 * @param t
 	 * @param c
@@ -31,18 +31,10 @@ public class CookieSales {
 		setChocolateChipCount(c);
 	}
 	
-	/**
-	 * Set functions for all member variables
-	 */
-	
 	public void setTotal(int total) { _totalSales += total; }
 	public void setSamoaCount(int i) { _samoaCount += i; }
 	public void setThinMintsCount(int i) { _thinMintsCount += i; }
 	public void setChocolateChipCount(int i) { _chocolateChipCount += i; }
-	
-	/**
-	 * Get functions for all member variables
-	 */
 	
 	public int getTotal() { return _totalSales; }
 	public int getSamoaCount() { return _samoaCount; }
