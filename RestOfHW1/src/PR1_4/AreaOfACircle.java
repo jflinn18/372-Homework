@@ -12,10 +12,10 @@ public class AreaOfACircle
 	/**
 	 * member variables for the equation for the area of a circle
 	 */
-	final public static double PI = 3.14;
+	final public static double PI = 3.14; //PT: use java.lang.Math.PI
 	public static double radius;
 	public static double area;
-	
+	//PT: need javadoc. -2
 	public static void main(String[] args)
 	{
 		Scanner input = new Scanner(System.in);
