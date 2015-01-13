@@ -24,7 +24,6 @@ public class CalculatePI {
 			 * If i is even, subtract the value from PI
 			 * converts to double instead of doing integer division
 			 */
-			//PT -- as we discussed, look for ways to reduce code redundancy
 			if (i % 2 == 0)
 				PI -= (double)4 / (double)(i+(i-1)); 
 			/**
