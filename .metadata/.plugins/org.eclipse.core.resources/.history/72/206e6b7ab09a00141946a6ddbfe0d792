@@ -1,0 +1,9 @@
+package ShapeClassHierarchy;
+
+public class Triangle {
+
+	public Triangle(int s1, int s2, int s3)
+	{
+		
+	}
+}

@@ -1,0 +1,123 @@
+package ShapeClassHierarchy;
+
+import java.util.Scanner;
+
+public class Main {
+	
+	/**
+	 * Launch the Application
+	 * @param args
+	 * @throws IllegalArgumentException
+	 */
+	public static void main(String[] args) throws IllegalArgumentException
+	{
+		createTriangle();
+		createRectangle();
+		createEllipse();
+	}
+	
+	public static void createTriangle() throws IllegalArgumentException
+	{
+		Scanner scan = new Scanner(System.in);
+		int [] sides = new int [3];
+		try
+		{
+			for(int i = 0; i < sides.length; i++)
+			{
+				try
+				{
+					System.out.print("Enter a side (integer): ");
+					sides[i] = scan.nextInt();
+				}
+				catch (Exception f)
+				{
+					System.out.print("That is not an integer");
+					scan.nextLine();
+					i--;
+				}
+			}
+				
+			Triangle t = new Triangle(sides[0], sides[1], sides[2]);
+			
+			System.out.println("Area of Triangle is " + t.getArea());
+			System.out.println("Area of Triangel is " + t.getPerimeter());
+		}
+		catch (Exception e)
+		{
+			;
+		}
+		
+		
+		scan.close();
+	}
+	
+	public static void createEllipse() throws IllegalArgumentException
+	{
+		Scanner scan = new Scanner(System.in);
+		int [] rads = new int [2];
+		try
+		{
+			for(int i = 0; i < rads.length; i++)
+			{
+				try
+				{
+					System.out.print("Enter a radius (integer): ");
+					rads[i] = scan.nextInt();
+				}
+				catch (Exception f)
+				{
+					System.out.print("That is not an integer");
+					scan.nextLine();
+					i--;
+				}
+			}
+				
+			Ellipse e = new Ellipse(rads[0], rads[1]);
+			
+			System.out.println("Area of Ellipse is " + e.getArea());
+			System.out.println("Area of Ellipse is " + e.getArea());
+		}
+		catch (Exception e)
+		{
+			;
+		}
+		
+		scan.close();
+	}
+	
+	public static void createRectangle() throws IllegalArgumentException
+	{
+		Scanner scan = new Scanner(System.in);
+		int [] sides = new int [2];
+		try
+		{
+			for(int i = 0; i < sides.length; i++)
+			{
+				try
+				{
+					System.out.print("Enter a side (integer): ");
+					sides[i] = scan.nextInt();
+				}
+				catch (Exception f)
+				{
+					System.out.print("That is not an integer");
+					scan.nextLine();
+					i--;
+				}
+			}
+				
+			Rectangle r = new Rectangle(sides[0], sides[1]);
+			
+			System.out.println("Area of Rectangle is " + r.getArea());
+			System.out.println("Area of Rectangle is " + r.getPerimeter());
+		}
+		catch (Exception e)
+		{
+			;
+		}
+		
+		
+		scan.close();
+	}
+
+}

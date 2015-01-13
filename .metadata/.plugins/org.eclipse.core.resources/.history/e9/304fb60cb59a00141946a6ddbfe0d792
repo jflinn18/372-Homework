@@ -1,0 +1,19 @@
+package ShapeClassHierarchy;
+
+public class Ellipse extends Shape{
+	
+	private double _rad1;
+	private double _rad2;
+
+	public Ellipse(int r1, int r2) throws IllegalArgumentException
+	{
+		if(r1 == 0 || r2 == 0)
+			throw new IllegalArgumentException("This is not an Ellipse");
+		
+		_rad1 = r1;
+		_rad2 = r2;
+	}
+	
+	public double getArea() { return Math.PI * _rad1 * _rad2; }
+	public double getPerimeter() { return 2 * Math.PI * (Math.sqrt(Math.pow(_rad1, 2) + Math.pow(_rad2, 2)) / 2)}
+}

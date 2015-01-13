@@ -1,0 +1,48 @@
+package ShapeClassHierarchy;
+
+public class Main {
+	
+	/**
+	 * Launch the Application
+	 * @param args
+	 * @throws IllegalArgumentException
+	 */
+	public static void main(String[] args) throws IllegalArgumentException
+	{
+		try
+		{
+			createTriangle();
+			createRectangle();
+			createEllipse();
+		}
+		catch (Exception e)
+		{
+			
+		}
+	}
+	
+	public static void createTriangle() throws IllegalArgumentException
+	{
+		int[] sides = new int[3]
+		try
+		{
+			for(int i = 0; i < sides.length; i++)
+			{
+				
+			}
+				
+			Triangle t = new Triangle();
+		}
+	}
+	
+	public static void createEllipse() throws IllegalArgumentException
+	{
+		
+	}
+	
+	public static void createRectangle() throws IllegalArgumentException
+	{
+		
+	}
+
+}

@@ -1,0 +1,21 @@
+package ShapeClassHierarchy;
+
+public class Rectangle extends Shape{
+	
+	private double _width;
+	private double _height;
+	
+	public Rectangle(int width, int height) throws IllegalArgumentException
+	{
+		if (width == 0 || height == 0)
+			throw new IllegalArgumentException();
+		
+		_width = width;
+		_height = height;
+	}
+	
+	public double getArea() { return _width * _height; }
+	public double getPerimeter() { return 2 * _width + 2 * _height; }
+	
+	
+}

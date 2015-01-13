@@ -1,0 +1,9 @@
+package ShapeClassHierarchy;
+
+public class Ellipse {
+
+	public Ellipse(int r1, int r2)
+	{
+		
+	}
+}

@@ -1,0 +1,9 @@
+package ShapeClassHierarchy;
+
+public class Rectangle {
+	
+	public Rectangle(int width, int height)
+	{
+		
+	}
+}

@@ -1,0 +1,21 @@
+package ShapeClassHierarchy;
+
+public class Rectangle extends Shape{
+	
+	public Rectangle(int width, int height) 
+	{
+		try 
+		{
+			
+		}
+		catch (Exception e)
+		{
+			
+		}
+	}
+	
+	public double getArea(int width, int height) { return width * height; }
+	public double getPerimeter(int width, int height) { return 2 * width + 2 * height; }
+	
+	
+}

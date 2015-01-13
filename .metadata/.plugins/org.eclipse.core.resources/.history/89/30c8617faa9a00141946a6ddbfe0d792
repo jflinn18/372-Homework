@@ -1,0 +1,24 @@
+package UserInput;
+
+public class GetInput {
+
+	private int _min;
+	private int _max;
+	private double _ave;
+	
+	
+	public int getMin()
+	{
+		
+	}
+	
+	public int getMax()
+	{
+		
+	}
+	
+	public double getAverage()
+	{
+		
+	}
+}
