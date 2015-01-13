@@ -1,6 +1,0 @@
-INDEX VERSION 1.127+C:\Users\Joseph\Documents\GitHub\CS372-Homework\.metadata\.plugins\org.eclipse.jdt.core
-3812305261.index
-3615308904.index
-2486966779.index
-3491679936.index
-3670912971.index
