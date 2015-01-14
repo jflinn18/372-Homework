@@ -47,7 +47,9 @@ public class UnderOverGUI extends javax.swing.JFrame {
         guessTextField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        saveBtn = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,12 +85,19 @@ public class UnderOverGUI extends javax.swing.JFrame {
 
         jLabel6.setText("Bet:");
 
-        saveBtn.setText("Save");
-        saveBtn.addActionListener(new java.awt.event.ActionListener() {
+        jMenu1.setText("File");
+
+        jMenuItem1.setText("Save");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveBtnActionPerformed(evt);
+                jMenuItem1ActionPerformed(evt);
             }
         });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,20 +128,17 @@ public class UnderOverGUI extends javax.swing.JFrame {
                                         .addComponent(betTextField, javax.swing.GroupLayout.Alignment.LEADING))
                                     .addComponent(jLabel6))
                                 .addGap(1, 1, 1)
-                                .addComponent(jButton1))))
+                                .addComponent(jButton1)))
+                        .addGap(50, 50, 50))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(saveBtn)))
-                .addContainerGap(85, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(saveBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,11 +176,19 @@ public class UnderOverGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Plays the game.
+     * Takes the guess and bet from the user and tells them whether they
+     * won or not.
+     * It also gives or takes money from the user depending on if they won or lost
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         wonLostLabel.setText("");
-        
+    
         String guess = guessTextField.getText();
         int bet = Integer.parseInt(betTextField.getText());
+        
         
         _one.roll();
         _two.roll();
@@ -196,15 +210,26 @@ public class UnderOverGUI extends javax.swing.JFrame {
         guessTextField.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+    /**
+     * calls the save function in the UnderOver object
+     * @param evt 
+     */
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         uo.save();
-    }//GEN-LAST:event_saveBtnActionPerformed
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
     
+    /**
+     * Sets the user label to the name that the user gave the game
+     * @param user 
+     */
     public void setUser(String user)
     {
         userLabel.setText(user);
     }
     
+    /**
+     * This updates the money label in the game
+     */
     public void updateMoney()
     {
         String s = String.format("$%d", uo.getMoney());
@@ -212,6 +237,7 @@ public class UnderOverGUI extends javax.swing.JFrame {
     }
     
     /**
+     * This starts the game from the login GUI
      * @param args the command line arguments
      */
     public void startGame(String user) {
@@ -257,8 +283,10 @@ public class UnderOverGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel moneyLabel;
-    private javax.swing.JButton saveBtn;
     private javax.swing.JLabel totalLabel;
     private javax.swing.JLabel userLabel;
     private javax.swing.JLabel wonLostLabel;

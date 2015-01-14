@@ -75,6 +75,10 @@ public class LoginGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Opens a new JFrame and passes in the data from this JFrame
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String user = loginTextField.getText();
         
@@ -84,6 +88,7 @@ public class LoginGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
+     * Launches the Application
      * @param args the command line arguments
      */
     public static void main(String args[]) {

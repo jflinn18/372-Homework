@@ -14,8 +14,17 @@ public class Di {
     
     private int value;
     
+    /**
+     * Returns the value of value
+     * This is the face value of the dice after a roll
+     * @return 
+     */
     public int getValue() { return value;}
     
+    /**
+     * This "rolls" the dice. It gets a random number 
+     * from 0 to 5 and then adds 1 so that it is 1-6
+     */
     public void roll()
     {
         Random gen = new Random();

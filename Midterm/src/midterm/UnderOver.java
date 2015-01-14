@@ -21,7 +21,13 @@ public class UnderOver {
     private Di _two;
     private GuessErrorGUI geg = new GuessErrorGUI();
     
-    
+    /**
+     * This method handles all of the operations to play the game
+     * @param bet
+     * @param guess
+     * @param one
+     * @param two 
+     */
     public void playGame(int bet, String guess, Di one, Di two)
     {
         try
@@ -43,6 +49,12 @@ public class UnderOver {
         }
     }
     
+    /**
+     * This makes sure that the guess is a valid guess.
+     * It then converts so that it is easier to compare.
+     * @param guess
+     * @throws Exception 
+     */
     public void makeGuess(String guess) throws Exception
     {
             if(guess.equalsIgnoreCase("under"))
@@ -52,11 +64,16 @@ public class UnderOver {
             else if (guess.equalsIgnoreCase("seven") || guess.equalsIgnoreCase("7"))
                 _intGuess = 7;
             else
-                throw new Exception();
-
-            
+                throw new Exception();      
     }
     
+    /**
+     * Makes sure the user has enough money to bet
+     * Then creates the amount that the user is betting depending 
+     * on if the user is guessing 7 or not.
+     * @param bet
+     * @throws Exception 
+     */
     public void placeBet(int bet) throws Exception
     {
         if (bet > _money)
@@ -68,6 +85,10 @@ public class UnderOver {
             _betValue = bet * 4;
     }
     
+    /**
+     * Returns whether the user won or lost
+     * @return 
+     */
     public boolean winLose()
     {
         if (_one.getValue() + _two.getValue() > 7 && _intGuess == 12)
@@ -80,6 +101,10 @@ public class UnderOver {
             return false;
     }
     
+    /**
+     * Gets the player name and money value from a file
+     * @param user 
+     */
     public void getPlayer(String user)
     {
         File f = new File("Resources/" + user + ".txt");
@@ -102,6 +127,9 @@ public class UnderOver {
         }
     }
     
+    /**
+     * Saves the user's data to a .txt file
+     */
     public void save()
     {
         File f = new File("Resources/" + _user + ".txt");
@@ -122,6 +150,10 @@ public class UnderOver {
         
     }
     
+    /**
+     * returns the value of _money
+     * @return 
+     */
     public int getMoney() { return _money; }
 
     
