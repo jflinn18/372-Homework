@@ -30,6 +30,7 @@ public class UnderOver {
      */
     public void playGame(int bet, String guess, Di one, Di two)
     {
+        // handles an exception from makeGuess or placeBet
         try
         {
             _one = one;
@@ -38,6 +39,7 @@ public class UnderOver {
             makeGuess(guess);
             placeBet(bet);
 
+            // adds or subtracts the correct amount of money.
             if (winLose())
                 _money += _betValue;
             else
@@ -57,6 +59,8 @@ public class UnderOver {
      */
     public void makeGuess(String guess) throws Exception
     {
+        // makes sure the guess is valid and initiates a member variable to a value
+        // to compare later.
             if(guess.equalsIgnoreCase("under"))
                 _intGuess = 0;
             else if (guess.equalsIgnoreCase("over"))
@@ -76,9 +80,11 @@ public class UnderOver {
      */
     public void placeBet(int bet) throws Exception
     {
+        // checks to see if the user is betting more than they have
         if (bet > _money)
             throw new Exception();
         
+        // sets the value of the bet
         if (_intGuess == 0 || _intGuess == 12)
             _betValue = bet;
         else if ( _intGuess == 7)
@@ -109,10 +115,12 @@ public class UnderOver {
     {
         File f = new File("Resources/" + user + ".txt");
         
+        // handles an io exception
         try
         {
             BufferedReader in = new BufferedReader(new FileReader(f));
             
+            // reads in data
             _user = in.readLine();
             _money = Integer.parseInt(in.readLine());
             
@@ -132,12 +140,15 @@ public class UnderOver {
      */
     public void save()
     {
+        // opens a file according to the name of the user
         File f = new File("Resources/" + _user + ".txt");
         
+        // handles any io exception
         try
         {
             BufferedWriter in = new BufferedWriter(new FileWriter(f));
             
+            // writes the data to the file
             in.write(_user + "\n");
             in.write(_money + "\n");
             
@@ -155,6 +166,10 @@ public class UnderOver {
      * @return 
      */
     public int getMoney() { return _money; }
+    
+    /**
+     * Sets the money when the player goes below 0
+     */
     public void setMoney() {_money = 500;}
 
     

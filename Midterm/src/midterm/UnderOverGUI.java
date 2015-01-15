@@ -21,6 +21,7 @@ public class UnderOverGUI extends javax.swing.JFrame {
     public UnderOverGUI(String user) {
         initComponents();
         
+        // gets the user data and sets up the labels depending on it.
         uo.getPlayer(user);
         setUser(user);
         updateMoney();
@@ -185,16 +186,18 @@ public class UnderOverGUI extends javax.swing.JFrame {
         String guess = guessTextField.getText();
         int bet = Integer.parseInt(betTextField.getText());
         
-        
+        // rolls the dice
         _one.roll();
         _two.roll();
         
+        // updates the dice lables according to the outcome of the dice rolls
         diOneLabel.setText("Di 1: " + _one.getValue());
         diTwoLabel.setText("Di 2: " + _two.getValue());
         totalLabel.setText("Total: " + (_one.getValue() + _two.getValue()));
         
         uo.playGame(bet, guess, _one, _two);
         
+        // lets the user know if they won or lost
         if (uo.winLose())
             wonLostLabel.setText("YOU WON!!!");
         else
@@ -202,6 +205,7 @@ public class UnderOverGUI extends javax.swing.JFrame {
         
         updateMoney();
         
+        // resets the text fields
         betTextField.setText("");
         guessTextField.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -228,8 +232,10 @@ public class UnderOverGUI extends javax.swing.JFrame {
      */
     public void updateMoney()
     {
+        // handles if the user is below 0
         if (uo.getMoney() <= 0)
         {
+            // gives the user $500
             uo.setMoney();
             MoneyGUI mg = new MoneyGUI();
             mg.giveMoney();
