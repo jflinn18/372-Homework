@@ -232,6 +232,13 @@ public class UnderOverGUI extends javax.swing.JFrame {
      */
     public void updateMoney()
     {
+        if (uo.getMoney() <= 0)
+        {
+            uo.setMoney();
+            MoneyGUI mg = new MoneyGUI();
+            mg.giveMoney();
+        }
+            
         String s = String.format("$%d", uo.getMoney());
         moneyLabel.setText(s);
     }

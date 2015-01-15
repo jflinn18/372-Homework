@@ -155,6 +155,7 @@ public class UnderOver {
      * @return 
      */
     public int getMoney() { return _money; }
+    public void setMoney() {_money = 500;}
 
     
     
