@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package EventManager;
+package EventManager3;
+import static EventManager3.Event.dateComparator;
+import static EventManager3.Event.locationComparator;
+import static EventManager3.Event.nameComparator;
 import java.util.*;
 import java.io.*;
 import javax.swing.*;
@@ -13,33 +16,50 @@ import javax.swing.*;
  */
 public class EventManager {
     private List _events = new ArrayList<Event>();
-    public DefaultListModel listModel = new DefaultListModel();
     
+    /**
+     * Constructor
+     */
     public EventManager()
     {
         inputEventsFile();
-        updateListModel();
     }
     
-    public void addEvent(Event e) { _events.add(e); updateListModel();}
+    /**
+     * Adds an event to the List member variable
+     * @param e 
+     */
+    public void addEvent(Event e) { _events.add(e);}
     
-    public void removeEvent(Event e)
+    /**
+     * Removes an event from the List member variable
+     * @param i 
+     */
+    public void removeEvent(int i) { _events.remove(i); }
+    
+    /**
+     * Sorts the list depending on how the user wants to sort the list
+     * @param s 
+     */
+    public void sortList(String s)
     {
-        for(int i = 0; i < _events.size(); i++)
-            if (e.equals(_events.get(i)))
-                _events.remove(i);
+        if (s.equals("Date"))
+            Collections.sort(_events, dateComparator);
+        else if (s.equals("Location"))
+            Collections.sort(_events, locationComparator);
+        else if (s.equals("Name"))
+            Collections.sort(_events, nameComparator);
     }
     
-    public DefaultListModel updateListModel()
-    {
-        for(int i = 0; i < _events.size(); i++)
-        {
-            listModel.addElement(_events.get(i));
-        }
-        
-        return listModel;
-    }
+    /**
+     * returns the List
+     * @return 
+     */
+    public List getList() { return _events; }
     
+    /**
+     * Gets the event data from a file
+     */
     public void inputEventsFile()
     {
         File f = new File("Resources/events.txt");
@@ -66,21 +86,25 @@ public class EventManager {
                 
                 name = words[1];
                 
-                words[3].replaceAll("at:", "");
                 
                 location = words[3];
                 
+
                 _events.add(new Event(name, location, month, day, year));
+
             }
             
             rdr.close();
         }
         catch (Exception e)
         {
-            System.out.println("IO Error!");
+            System.out.println("Input Error!");
         }
     }
     
+    /**
+     * Stores the event data in a file
+     */
     public void outputEventsFile()
     {
         File f = new File("Resources/events.txt");
@@ -92,11 +116,14 @@ public class EventManager {
             for (int i = 0; i < _events.size(); i++)
             {
                 wrtr.write(_events.get(i).toString());
+                wrtr.newLine();
             }
+            
+            wrtr.close();
         }
         catch (Exception e)
         {
-            System.out.println("IO Error!");
+            System.out.println("Output Error!");
         }
     }
 }
