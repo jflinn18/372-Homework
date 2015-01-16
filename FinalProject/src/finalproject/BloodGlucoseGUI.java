@@ -163,7 +163,7 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        OpenMenuGUI omg = new OpenMenuGUI
+        OpenMenuGUI omg = new OpenMenuGUI();
         
         // add the function call that will open the file and read in
     }//GEN-LAST:event_jMenuItem2ActionPerformed
