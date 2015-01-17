@@ -5,17 +5,36 @@
  */
 package finalproject;
 
+import javax.swing.JFileChooser;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
+
 /**
  *
  * @author Joseph
  */
 public class BloodGlucoseGUI extends javax.swing.JFrame {
 
+    public MyTableModel tabMod;
+    
     /**
      * Creates new form BloodGlucoseGUI
      */
     public BloodGlucoseGUI() {
         initComponents();
+        jfc = new JFileChooser();
+        
+        tabMod = new MyTableModel();
+        jTable2.setModel(tabMod);
+        
+        JTableHeader th = jTable2.getTableHeader();
+        TableColumnModel tcm = th.getColumnModel();
+        TableColumn tc = tcm.getColumn(0);
+        tc.setHeaderValue("Time");
+        tc = tcm.getColumn(1);
+        tc.setHeaderValue( "Blood Glucose" );
+        th.repaint();
     }
 
     /**
@@ -37,6 +56,7 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
@@ -131,6 +151,14 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
         jMenuItem1.setText("Save");
         jMenu1.add(jMenuItem1);
 
+        jMenuItem3.setText("Save As...");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
         jMenuItem2.setText("Open");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,15 +191,20 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        OpenMenuGUI omg = new OpenMenuGUI
+        jfc.showOpenDialog(jfc);
         
         // add the function call that will open the file and read in
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        jfc.showSaveDialog(jfc);
+        // add the function call that will open the file to save it
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -211,10 +244,13 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
+
+    private JFileChooser jfc;
 }
