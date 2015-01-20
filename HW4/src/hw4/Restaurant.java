@@ -26,7 +26,7 @@ public class Restaurant {
     
     public Restaurant(String s)
     {
-        String[] rest = s.split("\n");
+        String[] rest = s.split("%");
         
         name = rest[0];
         address = rest[1];
@@ -34,11 +34,21 @@ public class Restaurant {
         stars = Integer.parseInt(rest[3]);
     }
     
-    @Override
-    public String toString()
+    public String toStringWrite()
     {
-        return getName() + "\n" + getAddress() + "\n" + getNotes() + "\n" +
+        return getName() + "%" + getAddress() + "%" + getNotes() + "%" +
                 getStars();
+    }
+    
+    @Override
+    public String toString() { return getName(); }
+    
+    public String toStringStars()
+    {
+        if(getStars() == 1)
+            return getStars() + " Star";
+        else
+            return getStars() + " Stars";
     }
     
     

@@ -12,18 +12,26 @@ package hw4;
 public class RestaurantListEditor extends javax.swing.JFrame {
 
     private RestaurantList list;
+    private RestaurantReviewer restRev;
     
     /**
      * Creates new form RestaurantListEditor
      */
-    public RestaurantListEditor() {
+    public RestaurantListEditor(RestaurantReviewer rr, RestaurantList rList) {
         initComponents();
-
+        this.list = rList;
+        this.restRev = rr;
+        editRList();
     }
     
-    public RestaurantListEditor(Restaurant r)
+    public RestaurantListEditor(RestaurantReviewer rr, RestaurantList rList, Restaurant r)
     {
-        setEditor(r);
+        initComponents();
+        this.list = rList;
+        this.restRev = rr;
+         editRList();
+         setEditor(r);
+
     }
 
     /**
@@ -107,21 +115,34 @@ public class RestaurantListEditor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Restaurant rest = new Restaurant(nameTextField.getText(), 
-                addressTextField.getText(), jTextArea1.getText(),
-        starsComboBox.getSelectedIndex() + 1);
-        
-        FileIO fio = new FileIO();
-        
-        fio.write(rest);
-        list.add(rest);
-        this.dispose();
+        try
+        {
+            if (jTextArea1.getText().contains("%"))
+                throw new Exception();
+                
+            Restaurant rest = new Restaurant(nameTextField.getText(), 
+                    addressTextField.getText(), jTextArea1.getText(),
+            starsComboBox.getSelectedIndex() + 1);
+
+            FileIO fio = new FileIO();
+
+            fio.write(rest);
+            list.add(rest);
+            this.dispose();
+
+            restRev.updateList();
+        }
+        catch (Exception ex)
+        {
+            InvalidInputGUI iig = new InvalidInputGUI();
+            iig.reportError();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public void editRList(RestaurantList list) {
+    public void editRList() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -153,15 +174,15 @@ public class RestaurantListEditor extends javax.swing.JFrame {
          
         });*/
         
-        new RestaurantListEditor().setVisible(true);
-        this.list = list;
+        this.setVisible(true);
+        //this.list = list;
     }
     
     public void setEditor(Restaurant r)
     {
         nameTextField.setText(r.getName());
         addressTextField.setText(r.getAddress());
-        starsComboBox.setSelectedItem(r.getStars());
+        starsComboBox.setSelectedItem(r.toStringStars());
         jTextArea1.setText(r.getNotes());
     }
 

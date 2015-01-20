@@ -29,7 +29,7 @@ public class FileIO {
         {
             BufferedWriter wrtr = new BufferedWriter(new FileWriter(file));
             
-            wrtr.write(o.toString());
+            wrtr.write(r.toStringWrite());
             
             wrtr.close();
         }
@@ -52,7 +52,7 @@ public class FileIO {
             while ((line = rdr.readLine()) != null)
             {
                 input += line;
-                input += "\n";
+                input += "%";
             }
             
             rdr.close();

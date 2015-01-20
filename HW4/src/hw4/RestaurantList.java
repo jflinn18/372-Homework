@@ -21,7 +21,7 @@ public class RestaurantList{
     
     public void popList()
     {
-        //rList.clear();
+        rList.clear();
         FileIO fio = new FileIO();
         
         List files = fio.getDir();

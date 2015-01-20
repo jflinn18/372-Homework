@@ -7,7 +7,6 @@ package hw4;
 
 import java.util.List;
 import javax.swing.DefaultListModel;
-import javax.swing.event.ListSelectionEvent;
 
 /**
  *
@@ -124,24 +123,33 @@ public class RestaurantReviewer extends javax.swing.JFrame {
 
     private void removeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtnActionPerformed
         rList.remove(listRest.getSelectedIndex());
+        
+        /*
+        try {
+         Files.delete(path);
+        } catch (NoSuchFileException x) {
+            System.err.format("%s: no such" + " file or directory%n", path);
+        } catch (DirectoryNotEmptyException x) {
+            System.err.format("%s not empty%n", path);
+        } catch (IOException x) {
+            // File permission problems are caught here.
+            System.err.println(x);
+        }
+        */
+        
         updateList();
     }//GEN-LAST:event_removeBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        restListEd = new RestaurantListEditor();
-        restListEd.editRList(rList);
-        
-        updateList();
+        restListEd = new RestaurantListEditor(this, rList);
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void selectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectBtnActionPerformed
         if (listRest.getSelectedValue() != null)
         {
             Restaurant r = (Restaurant)rList.getElementAt(listRest.getSelectedIndex());
-            restListEd = new RestaurantListEditor(r);
-            restListEd.editRList(rList);
+            restListEd = new RestaurantListEditor(this, rList, r);
             
-            updateList();
         }
     }//GEN-LAST:event_selectBtnActionPerformed
 
@@ -210,6 +218,7 @@ public class RestaurantReviewer extends javax.swing.JFrame {
     public void updateList()
     {
         listModel.clear();
+        rList.popList();
         List l = rList.getList();
         
         for (int i = 0; i < l.size(); i++)
