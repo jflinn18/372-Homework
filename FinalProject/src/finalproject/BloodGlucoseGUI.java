@@ -9,6 +9,7 @@ import javax.swing.JFileChooser;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
+import org.jfree.chart.ChartPanel;
 
 /**
  *
@@ -16,7 +17,8 @@ import javax.swing.table.TableColumnModel;
  */
 public class BloodGlucoseGUI extends javax.swing.JFrame {
 
-    public MyTableModel tabMod;
+    private MyTableModel tabMod;
+    private ChartPanel chartPanel;
     
     /**
      * Creates new form BloodGlucoseGUI
@@ -52,6 +54,7 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         dateTextField = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -105,6 +108,13 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
 
         jLabel1.setText("Date:");
 
+        jButton1.setText("Graph");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -116,18 +126,22 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
                     .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(331, Short.MAX_VALUE))
+                .addGap(127, 127, 127)
+                .addComponent(jButton1)
+                .addContainerGap(143, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -201,6 +215,22 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
         // add the function call that will open the file to save it
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        for (int i = 0; i < jTable2.getRowCount(); i++)
+        {
+            tabMod.setValueAt((Object)jTable2.getValueAt(i, 0), i, 0);
+        }
+
+        for (int i = 0; i < tabMod.getRowCount(); i++)
+        {
+            System.out.println(tabMod.getValueAt(i, 0));
+        }
+        
+        GraphData graph = new GraphData();
+        chartPanel = new ChartPanel(graph.graph(tabMod.getMyData(), tabMod.getNames()));
+        jTabbedPane1.setComponentAt(1, chartPanel);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -238,6 +268,7 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField dateTextField;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
