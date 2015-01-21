@@ -5,6 +5,8 @@
  */
 package hw4;
 
+import java.io.IOException;
+
 /**
  *
  * @author Joseph
@@ -15,18 +17,30 @@ public class RestaurantListEditor extends javax.swing.JFrame {
     private RestaurantReviewer restRev;
     
     /**
-     * Creates new form RestaurantListEditor
+     * Creates a new Form of RestaurantListEditor
+     * @param rr
+     * @param rList 
      */
     public RestaurantListEditor(RestaurantReviewer rr, RestaurantList rList) {
         initComponents();
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setWrapStyleWord(true);
         this.list = rList;
         this.restRev = rr;
         editRList();
     }
     
+    /**
+     * Creates a new form of RestaurantListEditor
+     * @param rr
+     * @param rList
+     * @param r 
+     */
     public RestaurantListEditor(RestaurantReviewer rr, RestaurantList rList, Restaurant r)
     {
         initComponents();
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setWrapStyleWord(true);
         this.list = rList;
         this.restRev = rr;
          editRList();
@@ -114,11 +128,19 @@ public class RestaurantListEditor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Takes the data from the user and saves it to a file.
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try
         {
             if (jTextArea1.getText().contains("%"))
                 throw new Exception();
+            if (jTextArea1.getText().equals("") || 
+                    nameTextField.getText().equals("") || 
+                    addressTextField.getText().equals(""))
+                throw new IOException();
                 
             Restaurant rest = new Restaurant(nameTextField.getText(), 
                     addressTextField.getText(), jTextArea1.getText(),
@@ -132,6 +154,11 @@ public class RestaurantListEditor extends javax.swing.JFrame {
 
             restRev.updateList();
         }
+        catch (IOException ex)
+        {
+            NoInputErrorGUI nieg = new NoInputErrorGUI();
+            nieg.reportError();
+        }
         catch (Exception ex)
         {
             InvalidInputGUI iig = new InvalidInputGUI();
@@ -140,6 +167,7 @@ public class RestaurantListEditor extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
+     * sets the form to visibleXS
      * @param args the command line arguments
      */
     public void editRList() {
@@ -178,6 +206,10 @@ public class RestaurantListEditor extends javax.swing.JFrame {
         //this.list = list;
     }
     
+    /**
+     * Sets the editor fields from data from a restaurant object
+     * @param r 
+     */
     public void setEditor(Restaurant r)
     {
         nameTextField.setText(r.getName());

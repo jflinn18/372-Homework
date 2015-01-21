@@ -121,29 +121,38 @@ public class RestaurantReviewer extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Removes the the selected restaurant review
+     * @param evt 
+     */
     private void removeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtnActionPerformed
-        rList.remove(listRest.getSelectedIndex());
+        RemoveGUI rg = new RemoveGUI();
+        rg.reportError();
         
         /*
-        try {
-         Files.delete(path);
-        } catch (NoSuchFileException x) {
-            System.err.format("%s: no such" + " file or directory%n", path);
-        } catch (DirectoryNotEmptyException x) {
-            System.err.format("%s not empty%n", path);
-        } catch (IOException x) {
-            // File permission problems are caught here.
-            System.err.println(x);
+        if (listRest.getSelectedValue() != null)
+        {
+            String name = listRest.getSelectedValue().toString();
+            rList.remove(listRest.getSelectedIndex());
+            FileIO fio = new FileIO();
+            fio.delete(name);
+            updateList();
         }
         */
-        
-        updateList();
     }//GEN-LAST:event_removeBtnActionPerformed
 
+    /**
+     * Adds a new restaurant review.
+     * @param evt 
+     */
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         restListEd = new RestaurantListEditor(this, rList);
     }//GEN-LAST:event_addBtnActionPerformed
 
+    /**
+     * Allows the User to review or edit their notes on the restaurant
+     * @param evt 
+     */
     private void selectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectBtnActionPerformed
         if (listRest.getSelectedValue() != null)
         {
@@ -153,11 +162,15 @@ public class RestaurantReviewer extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_selectBtnActionPerformed
 
+    /**
+     * Accidental inclusion
+     * @param evt 
+     */
     private void listRestValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listRestValueChanged
-    
     }//GEN-LAST:event_listRestValueChanged
 
     /**
+     * Launches the Application
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -201,6 +214,9 @@ public class RestaurantReviewer extends javax.swing.JFrame {
     private javax.swing.JButton selectBtn;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Initiates the list of restaurants from files
+     */
     public void initList()
     {
         rList = new RestaurantList();
@@ -215,6 +231,9 @@ public class RestaurantReviewer extends javax.swing.JFrame {
         listRest.setModel(listModel);
     }
 
+    /**
+     * clears the list and updates it from files.
+     */
     public void updateList()
     {
         listModel.clear();

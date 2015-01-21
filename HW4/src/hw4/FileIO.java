@@ -5,6 +5,9 @@
  */
 package hw4;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 /**
@@ -12,14 +15,24 @@ import java.util.*;
  * @author Joseph
  */
 public class FileIO {
-    
-    private String filename;
+
     private String input;
     private List<String> files = new ArrayList<String>();
- 
-    public String getFilename() { return filename; }
-    public void setFilename(String filename) { this.filename = filename; }
     
+    /**
+     * Couldn't get this to work correctly
+     * @param filename 
+     */
+    public void delete(String filename)
+    {
+        File file = new File("Resource/Restaurant" + filename);
+        file.delete();
+    }
+    
+    /**
+     * Writes the restaurant data to a file
+     * @param o 
+     */
     public void write(Object o)
     {
         Restaurant r = (Restaurant)o;
@@ -39,6 +52,10 @@ public class FileIO {
         }
     }
     
+    /**
+     * Reads the Restaurant data from a file
+     * @param s 
+     */
     public void read(String s)
     {
         File file = new File("Resources/Restaurant/" + s);
@@ -65,6 +82,10 @@ public class FileIO {
         }
     }
     
+    /**
+     * Returns the names of files in the directory where the restaurant data is stored.
+     * @return 
+     */
     public List getDir()
     {
         File directory = new File("Resources/Restaurant/");
@@ -81,5 +102,9 @@ public class FileIO {
         return files;
     }
     
+    /**
+     * returns member variable "input"
+     * @return 
+     */
     public String getInput() { return input; }
 }

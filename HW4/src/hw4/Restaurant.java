@@ -16,6 +16,13 @@ public class Restaurant {
     private String notes;
     private int stars;
     
+    /**
+     * Constructor
+     * @param name
+     * @param address
+     * @param notes
+     * @param stars 
+     */
     public Restaurant(String name, String address, String notes, int stars)
     {
         this.name = name;
@@ -24,25 +31,43 @@ public class Restaurant {
         this.stars = stars;
     }
     
+    /**
+     * Constructor
+     * @param s 
+     */
     public Restaurant(String s)
     {
         String[] rest = s.split("%");
         
-        name = rest[0];
-        address = rest[1];
-        notes = rest[2];
-        stars = Integer.parseInt(rest[3]);
+        setName(rest[0]);
+        setAddress(rest[1]);
+        setNotes(rest[2]);
+        setStars(Integer.parseInt(rest[3]));
     }
     
+    /**
+     * A toString method that writes all of the restaurant data to a string
+     * to be output to a file
+     * @return 
+     */
     public String toStringWrite()
     {
         return getName() + "%" + getAddress() + "%" + getNotes() + "%" +
                 getStars();
     }
     
+    /**
+     * Overrides the Object toString method to return just the name
+     * This lets the Jlist display only the name and not all of the data
+     * @return 
+     */
     @Override
     public String toString() { return getName(); }
     
+    /**
+     * A toString method for the number of stars given to a restaurant
+     * @return 
+     */
     public String toStringStars()
     {
         if(getStars() == 1)
@@ -52,13 +77,52 @@ public class Restaurant {
     }
     
     
+    /**
+     * Returns the name of the Restaurant
+     * @return 
+     */
     public String getName() { return name; }
+    
+    /**
+     * Returns the address of the Restaurant
+     * @return 
+     */
     public String getAddress() { return address; }
+    
+    /**
+     * Returns the notes on the Restaurant
+     * @return 
+     */
     public String getNotes() { return notes; }
+    
+    /**
+     * Returns the number of stars given to the restaurant
+     * @return 
+     */
     public int getStars() { return stars; }
     
+    
+    /**
+     * Sets the name of the Restaurant
+     * @param s 
+     */
     public void setName(String s) { name = s; }
+    
+    /**
+     * Sets the address of the Restaurant
+     * @param s 
+     */
     public void setAddress(String s) {address = s; }
+    
+    /**
+     * Sets the notes for the restaurant
+     * @param s 
+     */
     public void setNotes(String s) { notes = s; }
+    
+    /**
+     * Sets the number of stars
+     * @param i 
+     */
     public void setStars(int i) { stars = i; }
 }

@@ -15,10 +15,27 @@ public class RestaurantList{
     
     private List rList = new ArrayList<Restaurant>();
     
+    /**
+     * Returns the list of Restaurants
+     * @return 
+     */
     public List getList() { return rList; }
+    
+    /**
+     * Adds a restaurant to the list of restaurants
+     * @param r 
+     */
     public void add(Restaurant r) {rList.add(r);}
+    
+    /**
+     * removes a restaurant from the list of restaurants
+     * @param i 
+     */
     public void remove(int i){ rList.remove(i);}
     
+    /**
+     * populates the list from the directory where the restaurant data is stored
+     */
     public void popList()
     {
         rList.clear();
@@ -34,6 +51,16 @@ public class RestaurantList{
         }
     }
 
+    /**
+     * Returns the size of the list
+     * @return 
+     */
     public int getSize() {return rList.size();}
+    
+    /**
+     * Returns the element at index i
+     * @param i
+     * @return 
+     */
     public Object getElementAt(int i) {return rList.get(i);}
 }
