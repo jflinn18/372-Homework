@@ -13,6 +13,10 @@ public class MainActivity extends ActionBarActivity {
 
     private Random gen;
 
+    /**
+     * When App is created, do these things
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +26,11 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
-
+    /**
+     * Creates an Option Menu when app is created
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -30,6 +38,11 @@ public class MainActivity extends ActionBarActivity {
         return true;
     }
 
+    /**
+     * Handles when options are selected in the menu
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -45,6 +58,10 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * "Flips" a coin with the Random class
+     * @param v
+     */
     public void flip(View v)
     {
         int coinSide = (gen.nextInt() % 2);
