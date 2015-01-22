@@ -5,6 +5,7 @@
  */
 package finalproject;
 
+import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
@@ -26,6 +27,9 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
     public BloodGlucoseGUI() {
         initComponents();
         jfc = new JFileChooser();
+        
+        File f = new File("Resources/");
+        jfc.setCurrentDirectory(f);
         
         tabMod = new MyTableModel();
         jTable2.setModel(tabMod);
@@ -162,10 +166,10 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
 
         jMenu1.setText("File");
 
-        jMenuItem1.setText("Save");
+        jMenuItem1.setText("Save Graph");
         jMenu1.add(jMenuItem1);
 
-        jMenuItem3.setText("Save As...");
+        jMenuItem3.setText("Save Data");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -206,12 +210,30 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         jfc.showOpenDialog(jfc);
+        tabMod.getDataFromFile(jfc.getSelectedFile());
+
+        setTable();
+
         
         // add the function call that will open the file and read in
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        jfc.showSaveDialog(jfc);
+        FileIO fio = new FileIO();
+        try
+        {
+            fio.outputToFile(tabMod.getDate(), tabMod.getMyData());
+        }
+        catch (Exception ex)
+        {
+            ErrorGUIs.DateErrorGUI deg = new ErrorGUIs.DateErrorGUI();
+            deg.reportError();
+            System.out.printf("%s", ex.getMessage());
+        }
+        
+        ErrorGUIs.SaveGUI sg = new ErrorGUIs.SaveGUI();
+        sg.report();
+
         // add the function call that will open the file to save it
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
@@ -223,7 +245,17 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
 
         for (int i = 0; i < tabMod.getRowCount(); i++)
         {
-            System.out.println(tabMod.getValueAt(i, 0));
+            System.out.println(tabMod.getValueAt(i, 1));
+        }
+        
+        try
+        {
+        tabMod.setDate(dateTextField.getText());
+        }
+        catch (Exception ex)
+        {
+            ErrorGUIs.DateErrorGUI deg = new ErrorGUIs.DateErrorGUI();
+            deg.reportError();
         }
         
         GraphData graph = new GraphData();
@@ -231,6 +263,11 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
         jTabbedPane1.setComponentAt(1, chartPanel);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public void setTable()
+    {
+        dateTextField.setText(tabMod.getDate());
+    }
+    
     /**
      * @param args the command line arguments
      */

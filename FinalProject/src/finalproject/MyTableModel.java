@@ -5,6 +5,7 @@
  */
 package finalproject;
 
+import java.io.File;
 import javax.swing.event.TableModelEvent;
 
 /**
@@ -24,6 +25,7 @@ public class MyTableModel extends javax.swing.table.AbstractTableModel{
         {"9:00 pm", null}, {"10:00 pm", null}, {"11:00 pm", null}
         };/*= new String[24][2];*/
     private TableModelEvent tabModEv;
+    private String date;
     
     
     public MyTableModel()
@@ -62,10 +64,79 @@ public class MyTableModel extends javax.swing.table.AbstractTableModel{
         String i = value.toString();
         //int i = Integer.parseInt(value.toString());
         
-        myData[row][col] = i;
+        if (i.equals(""))
+            myData[row][col] = null;
+        else
+            myData[row][col] = i;
+        
         fireTableCellUpdated(row, col);
+    }
+    
+    public void checkDateValidity() throws Exception
+    {
+        String [] as;
+        int[] ai = new int[3];
+        
+        if (date.contains("-"))
+            as = date.split("-");
+        else if (date.contains("/"))
+            as = date.split("/");
+        else
+            throw new Exception();
+        
+        if (as.length < 3 || as.length > 3)
+            throw new Exception();
+        
+        for (int i = 0; i < 3; i++ )
+            ai[i] = Integer.parseInt(as[i]);
+        
+        if (ai[0] > 12 || ai[0] < 1)
+            throw new Exception();
+        if(( ai[0] == 1 || ai[0] == 3 || ai[0] == 5 || ai[0] == 7 || 
+                ai[0] == 8 || ai[0] == 10 || ai[0] == 12) && (ai[1] > 31 || ai[1] < 1))
+            throw new Exception();
+        if(( ai[0] == 4 || ai[0] == 6 || ai[0] == 9 || ai[0] == 11 ) && ( ai[1] > 30 || ai[1] < 1))
+            throw new Exception();
+        
+        if((ai[0] == 2 && ( ai[2] % 4 == 0)) && ai[1] > 29)
+            throw new Exception();
+        
+        
+        if ( ai[2] < 0)
+            throw new Exception();
+            
+    }
+    
+    public void setDate(String date) throws Exception
+    {
+        if (date.equals(""))
+            throw new Exception();
+        
+        checkDateValidity();
+        this.date = date.replace('/', '-');
     }
     
     public String[][] getMyData(){ return myData; }
     public String[] getNames(){ return names; }
+    public String getDate() { return date;}
+    
+    public void getDataFromFile(File f) 
+    { 
+        FileIO fio = new FileIO();
+        myData = fio.inputFromFile(f);
+        date = fio.getDate();
+    }
+    
+    public int getDataCount()
+    {
+        int count = 0;
+        
+        for (int i = 0; i < myData.length; i++)
+        {
+            if(myData[i][1] != null)
+                count ++;
+        }
+        
+        return count;
+    }
 }

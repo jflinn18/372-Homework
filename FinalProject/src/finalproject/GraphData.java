@@ -39,7 +39,7 @@ public class GraphData {
         XYDataset xyDataset = xyCollection;
         
         
-        JFreeChart chart = ChartFactory.createXYLineChart("Numbers vs Other_Numbers", 
+        JFreeChart chart = ChartFactory.createXYLineChart("Blood Glucose vs Time", 
                 names[0], names[1], xyDataset /*chartData*/, 
                 PlotOrientation.VERTICAL, true, true, false);
         
