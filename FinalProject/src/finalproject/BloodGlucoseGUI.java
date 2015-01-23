@@ -246,8 +246,12 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
         jfc.showOpenDialog(jfc);
         jfc.cancelSelection();
+        
+        for (int i = 0; i < tabMod.getMyData().length; i++)
+            jTable2.setValueAt("", i, 1);
+        
         tabMod.getDataFromFile(jfc.getSelectedFile());
-
+        
         try
         {
             setTable();
