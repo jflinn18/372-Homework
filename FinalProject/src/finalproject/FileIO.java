@@ -88,6 +88,7 @@ public class FileIO {
         catch (Exception ex)
         {
             System.out.println("Input Error!");
+            System.out.println(ex.getMessage());
         }
         
         return data;

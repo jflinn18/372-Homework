@@ -107,36 +107,24 @@ public class MyTableModel extends javax.swing.table.AbstractTableModel{
             
     }
     
-    public void setDate(String date) throws Exception
-    {
+    public void setDate(String date) { this.date = date.replace('/', '-'); }
+    
+    public String[][] getMyData(){ return myData; }
+    public String[] getNames(){ return names; }
+    
+    public String getDate() throws Exception
+    { 
         if (date.equals(""))
             throw new Exception();
         
         checkDateValidity();
-        this.date = date.replace('/', '-');
+        return date;
     }
-    
-    public String[][] getMyData(){ return myData; }
-    public String[] getNames(){ return names; }
-    public String getDate() { return date;}
     
     public void getDataFromFile(File f) 
     { 
         FileIO fio = new FileIO();
         myData = fio.inputFromFile(f);
         date = fio.getDate();
-    }
-    
-    public int getDataCount()
-    {
-        int count = 0;
-        
-        for (int i = 0; i < myData.length; i++)
-        {
-            if(myData[i][1] != null)
-                count ++;
-        }
-        
-        return count;
     }
 }
