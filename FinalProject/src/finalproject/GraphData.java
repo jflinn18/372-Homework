@@ -6,8 +6,14 @@
 package finalproject;
 import java.awt.Color;
 import org.jfree.chart.*;
+import org.jfree.chart.axis.DateAxis;
+import org.jfree.chart.plot.Plot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
+import org.jfree.data.time.Day;
+import org.jfree.data.time.Hour;
+import org.jfree.data.time.TimeSeries;
+import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
@@ -19,41 +25,61 @@ import org.jfree.data.xy.XYSeriesCollection;
  */
 public class GraphData {
     
-    public JFreeChart graph(String[][] data, String[] names)
+    private int[] today;
+    private Day day;
+    
+    /**
+     * Constructor
+     * @param date 
+     */
+    public GraphData(String date)
     {
-        //DefaultCategoryDataset chartData = new DefaultCategoryDataset();
-        XYSeries mySeries = new XYSeries("Data");
-        int j = 0;
+        String[] day = date.split("-");
+        today = new int[day.length];
+        
+        for (int i = 0; i < day.length; i++)
+            today[i] = Integer.parseInt(day[i]);
+        
+        this.day = new Day(today[1], today[0], today[2] + 2000);
+    }
+    
+    /**
+     * Creates a chart with the data that is graphed vs time
+     * @param data
+     * @param names
+     * @return 
+     */
+    public JFreeChart graphVsTime(String[][] data, String[] names)
+    {
+        TimeSeries mySeries = new TimeSeries("Data");
         
         for (int i = 0; i < data.length; i++)
         {
-                if (data[i][j] != null && data[i][j+1] != null)
-                    mySeries.add(convertTime(data[i][j]), 
-                            Integer.parseInt(data[i][j+1]));
-                    //chartData.addValue(Integer.parseInt(data[j][i]), names[0], names[1]);
+            if (data[i][0] != null && data[i][1] != null)
+                mySeries.add(new Hour(convertTime(data[i][0]), day), 
+                        Integer.parseInt(data[i][1]));
         }
         
-        XYSeriesCollection xyCollection = new XYSeriesCollection();
-        xyCollection.addSeries(mySeries);
+        TimeSeriesCollection collection = new TimeSeriesCollection(mySeries);
         
-        XYDataset xyDataset = xyCollection;
+        XYDataset dataset = collection;
         
-        
-        JFreeChart chart = ChartFactory.createXYLineChart("Blood Glucose vs Time", 
-                names[0], names[1], xyDataset /*chartData*/, 
-                PlotOrientation.VERTICAL, true, true, false);
+        JFreeChart chart = ChartFactory.createTimeSeriesChart("Blood Glucose vs Time", 
+                names[0], names[1], dataset, true, true, false);
         
         XYPlot plot = (XYPlot)chart.getPlot();
         plot.setBackgroundPaint(Color.white);
         plot.setDomainGridlinePaint(Color.BLACK);
         plot.setRangeGridlinePaint(Color.BLACK);
-
         
         return chart;
-        
     }
     
-    
+    /**
+     * Converts the String time to an integer time
+     * @param time
+     * @return 
+     */
     public int convertTime(String time)
     {
         int hour = 24;

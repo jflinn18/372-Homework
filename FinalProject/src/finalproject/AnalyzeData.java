@@ -22,6 +22,11 @@ public class AnalyzeData {
     private int[] highs;
     private int[] today;
     
+    /**
+     * Constructor
+     * @param data
+     * @param date 
+     */
     public AnalyzeData(String[][] data, String date)
     {
         this.date = date;
@@ -45,6 +50,9 @@ public class AnalyzeData {
         analyzeDataAgainstWeek();
     }
     
+    /**
+     * Analyzes the selected data with the data from the past week
+     */
     public void analyzeDataAgainstWeek()
     {
         for(int i = 0; i < todaysData.length; i++)
@@ -59,6 +67,10 @@ public class AnalyzeData {
         }
     }
     
+    /**
+     * Gets where the data was above or below the set range 
+     * [0 , 70) U (160, INFINITY)
+     */
     public void getWeeksHighsAndLows()
     {
         for (int i = 0; i < weeksData.length; i++)
@@ -114,6 +126,9 @@ public class AnalyzeData {
         }
     }
     
+    /**
+     * Gets the data from the last week
+     */
     public void popWeekData()
     {
         FileIO fio = new FileIO();
@@ -124,16 +139,23 @@ public class AnalyzeData {
         }
     }
     
+    /**
+     * Gets the files from the last week
+     */
     public void getPastSevenFiles()
     {
         String[] days = getPastWeek();
         
         for (int i = 0; i < history.length; i++)
         {
-            history[i] = new File("Resources/" + days[i] + ".txt");
+            history[i] = new File("C:/Program Files/BGDataAnalysis/Data/" + days[i] + ".txt");
         }
     }
     
+    /**
+     * Returns the last seven days from a given day
+     * @return 
+     */
     public String[] getPastWeek()
     {
         String[] days = new String[7];
@@ -162,6 +184,11 @@ public class AnalyzeData {
         return days;
     }
 
+    /**
+     * Returns today, in an array of integers
+     * [month, day, year]
+     * @return 
+     */
     public int[] getToday() { return today; }
 
 }

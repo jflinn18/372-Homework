@@ -18,6 +18,11 @@ public class MyListModel {
     
     private List highsAndLows = new ArrayList<String>();
     
+    /**
+     * Constructor
+     * @param data
+     * @param todaysData 
+     */
     public MyListModel(int[] data, String[][] todaysData)
     {
         for (int i = 0; i < data.length; i++)
@@ -29,5 +34,9 @@ public class MyListModel {
         }
     }
     
+    /**
+     * Returns the list stored here
+     * @return 
+     */
     public List getList() { return highsAndLows;}
 }

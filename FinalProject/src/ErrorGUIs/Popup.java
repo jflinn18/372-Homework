@@ -19,16 +19,26 @@ public class Popup {
  
     private JPanel panel;
     
+    /**
+     * Constructor
+     */
     public Popup()
     {
         panel = new JPanel(new GridLayout(0, 1));
     }
     
+    /**
+     * Adds a message to the Popup box
+     * @param message 
+     */
     public void add(String message)
     {
         panel.add(new JLabel(String.format("%s", message)));
     }
     
+    /**
+     * Displays the message
+     */
     public void display()
     {
         JOptionPane.showMessageDialog(null, panel);

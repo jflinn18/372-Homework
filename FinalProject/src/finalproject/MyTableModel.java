@@ -45,12 +45,35 @@ public class MyTableModel extends javax.swing.table.AbstractTableModel{
 //        };
     }
     
+    /**
+     * Returns how many rows there are
+     * @return 
+     */
     @Override
     public int getRowCount() { return myData.length; }
+    
+    /**
+     * Returns how may columns there are
+     * @return 
+     */
     @Override
     public int getColumnCount() { return names.length;}
+    
+    /**
+     * Returns the value at the given indexes.
+     * @param row
+     * @param col
+     * @return 
+     */
     @Override
     public Object getValueAt(int row, int col) { return myData[row][col]; }
+    
+    /**
+     * Returns if the given cell is Editable
+     * @param row
+     * @param col
+     * @return 
+     */
     @Override
     public boolean isCellEditable(int row, int col)
     {
@@ -59,6 +82,13 @@ public class MyTableModel extends javax.swing.table.AbstractTableModel{
         else
             return false;
     }
+    
+    /**
+     * Sets the value of the cell at the given row and column
+     * @param value
+     * @param row
+     * @param col 
+     */
     @Override
     public void setValueAt(Object value, int row, int col)
     {
@@ -73,6 +103,10 @@ public class MyTableModel extends javax.swing.table.AbstractTableModel{
         fireTableCellUpdated(row, col);
     }
     
+    /**
+     * Checks to see if the date is an actual date
+     * @throws Exception 
+     */
     public void checkDateValidity() throws Exception
     {
         String [] as;
@@ -108,8 +142,17 @@ public class MyTableModel extends javax.swing.table.AbstractTableModel{
             
     }
      
+    /**
+     * Sets the value of notes
+     * @param notes 
+     */
     public void setNotes(String notes) { this.notes = notes; }
     
+    /**
+     * Sets the date and makes sure that there is a date there
+     * @param date
+     * @throws Exception 
+     */
     public void setDate(String date)  throws Exception
     { 
         if (date.equals(""))
@@ -118,10 +161,34 @@ public class MyTableModel extends javax.swing.table.AbstractTableModel{
             this.date = date.replace('/', '-');
     }
     
+    /**
+     * Sets the date to an empty string
+     */
+    public void resetDate() {date = "";}
+    
+    /**
+     * Returns the data stored in the model
+     * @return 
+     */
     public String[][] getMyData(){ return myData; }
+    
+    /**
+     * Returns the names of the columns 
+     * @return 
+     */
     public String[] getNames(){ return names; }
+    
+    /**
+     * Returns the notes
+     * @return 
+     */
     public String getNotes() {return notes;}
     
+    /**
+     * Returns the date
+     * @return
+     * @throws Exception 
+     */
     public String getDate() throws Exception
     { 
         if (date.equals(""))
@@ -131,6 +198,10 @@ public class MyTableModel extends javax.swing.table.AbstractTableModel{
         return date;
     }
     
+    /**
+     * Returns the data from the file that is passed in
+     * @param f 
+     */
     public void getDataFromFile(File f) 
     { 
         FileIO fio = new FileIO();

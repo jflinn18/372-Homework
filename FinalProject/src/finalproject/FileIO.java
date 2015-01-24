@@ -28,12 +28,27 @@ public class FileIO {
         {"9:00 pm", null}, {"10:00 pm", null}, {"11:00 pm", null}
         };
     
-    
+    /**
+     * Returns the date from the file
+     * @return 
+     */
     public String getDate() {return date;}
+    
+    /**
+     * Returns the Notes from the file
+     * @return 
+     */
     public String getNotes() {return notes;}
+    
+    /**
+     * Prints the date, data, and the notes to a file for later use
+     * @param date
+     * @param data
+     * @param notes 
+     */
     public void outputToFile(String date, String[][] data, String notes)
     {
-        File f = new File("Resources/" + date + ".txt");
+        File f = new File("C:/Program Files/BGDataAnalysis/Data/" + date + ".txt");
         
         try
         {
@@ -62,6 +77,11 @@ public class FileIO {
         }
     }
     
+    /**
+     * Takes a file and reads in the data from it
+     * @param f
+     * @return 
+     */
     public String[][] inputFromFile(File f)
     {
         //File f = new File(filename);
@@ -101,11 +121,19 @@ public class FileIO {
         return data;
     }
     
+    /**
+     * Outputs the graph to a png file.
+     * @param date
+     * @param jfc
+     * @throws Exception 
+     */
     public void saveGraph(String date, JFreeChart jfc) throws Exception
     {
             int width=640; // Width of the image 
             int height=480; // Height of the image               
-            File lineChart = new File("Resources/BGCharts/" + date + "Chart.png");              
+            File lineChart = new File("C:Program Files/BGDataAnalysis/BGCharts/" 
+                    + date + "Chart.png");
+            
             ChartUtilities.saveChartAsPNG(lineChart, jfc, width, height);
 
 
