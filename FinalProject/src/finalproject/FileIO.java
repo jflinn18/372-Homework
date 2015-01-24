@@ -6,6 +6,8 @@
 package finalproject;
 
 import java.io.*;
+import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.JFreeChart;
 /**
  *
  * @author Joseph
@@ -14,6 +16,7 @@ public class FileIO {
     
     private String filename;
     private String date;
+    private String notes;
     private String[][] data = {
         {"12:00 am", null}, {"1:00 am", null}, {"2:00 am", null}, 
         {"3:00 am", null}, {"4:00 am", null}, {"5:00 am", null}, 
@@ -27,7 +30,8 @@ public class FileIO {
     
     
     public String getDate() {return date;}
-    public void outputToFile(String date, String[][] data)
+    public String getNotes() {return notes;}
+    public void outputToFile(String date, String[][] data, String notes)
     {
         File f = new File("Resources/" + date + ".txt");
         
@@ -36,6 +40,8 @@ public class FileIO {
             BufferedWriter wrtr = new BufferedWriter(new FileWriter(f));
             
             wrtr.write(date);
+            wrtr.newLine();
+            wrtr.write(notes);
             wrtr.newLine();
             
             for (int i = 0; i < 24; i++)
@@ -67,6 +73,7 @@ public class FileIO {
             String[] sa;
             
             date = rdr.readLine();
+            notes = rdr.readLine();
             
             while((s = rdr.readLine()) != null)
             {
@@ -94,13 +101,13 @@ public class FileIO {
         return data;
     }
     
-    public void saveGraph(String date)
+    public void saveGraph(String date, JFreeChart jfc) throws Exception
     {
-        /*
-        int width=640; // Width of the image 
-        int height=480; // Height of the image               
-        File lineChart=new File(date + "Chart.png");              
-        ChartUtilities.saveChartAsPNG(lineChart,lineChartObject,width,height);
-        */
+            int width=640; // Width of the image 
+            int height=480; // Height of the image               
+            File lineChart = new File("Resources/BGCharts/" + date + "Chart.png");              
+            ChartUtilities.saveChartAsPNG(lineChart, jfc, width, height);
+
+
     }
 }

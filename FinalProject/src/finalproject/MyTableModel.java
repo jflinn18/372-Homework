@@ -26,6 +26,7 @@ public class MyTableModel extends javax.swing.table.AbstractTableModel{
         };/*= new String[24][2];*/
     private TableModelEvent tabModEv;
     private String date;
+    private String notes;
     
     
     public MyTableModel()
@@ -106,11 +107,20 @@ public class MyTableModel extends javax.swing.table.AbstractTableModel{
             throw new Exception();
             
     }
+     
+    public void setNotes(String notes) { this.notes = notes; }
     
-    public void setDate(String date) { this.date = date.replace('/', '-'); }
+    public void setDate(String date)  throws Exception
+    { 
+        if (date.equals(""))
+            throw new Exception();
+        else
+            this.date = date.replace('/', '-');
+    }
     
     public String[][] getMyData(){ return myData; }
     public String[] getNames(){ return names; }
+    public String getNotes() {return notes;}
     
     public String getDate() throws Exception
     { 
@@ -126,5 +136,6 @@ public class MyTableModel extends javax.swing.table.AbstractTableModel{
         FileIO fio = new FileIO();
         myData = fio.inputFromFile(f);
         date = fio.getDate();
+        notes = fio.getNotes();
     }
 }

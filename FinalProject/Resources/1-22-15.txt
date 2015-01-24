@@ -1,9 +1,2 @@
 1-22-15
-1:00 am%196
-7:00 am%146
-8:00 am%151
-11:00 am%308
-12:00 pm%208
-1:00 pm%126
-2:00 pm%76
-5:00 pm%110
+I accidentally deleted the data from this file. I need to fix this and 1/15/15 data.

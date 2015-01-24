@@ -1,8 +1,5 @@
 1-15-15
-2:00 am%93
-4:00 am%137
-8:00 am%166
-12:00 pm%291
-5:00 pm%86
-9:00 pm%354
-11:00 pm%142
+I need to fix the data for January 15th. I accidentally deleted it while debugging the new notes.
+12:00 am%132
+6:00 am%125
+12:00 pm%256

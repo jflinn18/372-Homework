@@ -5,6 +5,7 @@
  */
 package finalproject;
 
+import java.awt.event.KeyEvent;
 import java.io.File;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
@@ -12,6 +13,7 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
 
 /**
  *
@@ -46,6 +48,9 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
         tc = tcm.getColumn(1);
         tc.setHeaderValue( "Blood Glucose" );
         th.repaint();
+        
+        notesTextArea.setLineWrap(true);
+        notesTextArea.setWrapStyleWord(true);
     }
 
     /**
@@ -63,11 +68,17 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         dateTextField = new javax.swing.JTextField();
-        garphBtn = new javax.swing.JButton();
+        addDataBtn = new javax.swing.JButton();
         analyzeBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        notesTextArea = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        graphBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         newMenuItem = new javax.swing.JMenuItem();
@@ -120,10 +131,10 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
 
         jLabel1.setText("Date:");
 
-        garphBtn.setText("Graph");
-        garphBtn.addActionListener(new java.awt.event.ActionListener() {
+        addDataBtn.setText("Add Data");
+        addDataBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                garphBtnActionPerformed(evt);
+                addDataBtnActionPerformed(evt);
             }
         });
 
@@ -141,57 +152,109 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jList1);
 
+        notesTextArea.setColumns(20);
+        notesTextArea.setRows(5);
+        notesTextArea.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                notesTextAreaKeyTyped(evt);
+            }
+        });
+        jScrollPane3.setViewportView(notesTextArea);
+
+        jLabel2.setText("Notes:");
+
+        jLabel3.setText("Analysis:");
+
+        graphBtn.setText("Graph");
+        graphBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                graphBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel1)
+                        .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addDataBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(graphBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(analyzeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(garphBtn)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(analyzeBtn))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32))
+                        .addComponent(jScrollPane3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(garphBtn)
-                            .addComponent(analyzeBtn)))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(addDataBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(graphBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(analyzeBtn)
+                        .addGap(39, 39, 39))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(26, Short.MAX_VALUE))
+                        .addGap(29, 29, 29))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3)
+                .addGap(70, 70, 70))
         );
 
         jTabbedPane1.addTab("Blood Glucose", jPanel1);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 695, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 412, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 695, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 449, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(40, 40, 40))
         );
 
         jTabbedPane1.addTab("Graph", jPanel2);
@@ -215,6 +278,11 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
         jMenu1.add(openMenuItem);
 
         saveGraphMenuItem.setText("Save Graph");
+        saveGraphMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveGraphMenuItemActionPerformed(evt);
+            }
+        });
         jMenu1.add(saveGraphMenuItem);
 
         saveDataMenuItem.setText("Save Data");
@@ -257,29 +325,32 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
             setTable();
         }
         catch (Exception ex) {}
-        // add the function call that will open the file and read in
     }//GEN-LAST:event_openMenuItemActionPerformed
 
     private void saveDataMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveDataMenuItemActionPerformed
+        addDataBtnActionPerformed(evt);
+        
         FileIO fio = new FileIO();
         try
         {
-            fio.outputToFile(tabMod.getDate(), tabMod.getMyData());
+            fio.outputToFile(tabMod.getDate(), tabMod.getMyData(), tabMod.getNotes());
+            
+            ErrorGUIs.Popup pu = new ErrorGUIs.Popup();
+            pu.add("Save Complete!");
+            pu.display();
         }
         catch (Exception ex)
         {
-            ErrorGUIs.DateErrorGUI deg = new ErrorGUIs.DateErrorGUI();
-            deg.reportError();
+            ErrorGUIs.Popup pu = new ErrorGUIs.Popup();
+            pu.add("Input a valid date:");
+            pu.add("mm/dd/yy");
+            pu.add("mm-dd-yy");
+            pu.display();
             System.out.printf("%s", ex.getMessage());
         }
-        
-        ErrorGUIs.SaveGUI sg = new ErrorGUIs.SaveGUI();
-        sg.report();
-
-        // add the function call that will open the file to save it
     }//GEN-LAST:event_saveDataMenuItemActionPerformed
 
-    private void garphBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_garphBtnActionPerformed
+    private void addDataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDataBtnActionPerformed
         for (int i = 0; i < jTable2.getRowCount(); i++)
         {
             tabMod.setValueAt((Object)jTable2.getValueAt(i, 0), i, 0);
@@ -287,19 +358,25 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
         
         try
         {
-        tabMod.setDate(dateTextField.getText());
+            tabMod.setDate(dateTextField.getText());
+            tabMod.setNotes(notesTextArea.getText());
+            
+            ErrorGUIs.Popup pu = new ErrorGUIs.Popup();
+            pu.add("Added Data Successfully!");
+            pu.display();
         }
         catch (Exception ex)
         {
-            ErrorGUIs.DateErrorGUI deg = new ErrorGUIs.DateErrorGUI();
-            deg.reportError();
+            ErrorGUIs.Popup pu = new ErrorGUIs.Popup();
+            pu.add("Input a valid date:");
+            pu.add("mm/dd/yy");
+            pu.add("mm-dd-yy");
+            pu.display();
             System.out.println("setTable() Error!");
         }
         
-        GraphData graph = new GraphData();
-        chartPanel = new ChartPanel(graph.graph(tabMod.getMyData(), tabMod.getNames()));
-        jTabbedPane1.setComponentAt(1, chartPanel);
-    }//GEN-LAST:event_garphBtnActionPerformed
+        
+    }//GEN-LAST:event_addDataBtnActionPerformed
 
     private void analyzeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analyzeBtnActionPerformed
         listMod.clear();
@@ -322,8 +399,9 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
         }
         catch (Exception ex)
         {
-            ErrorGUIs.InvalidInputGUI iig = new ErrorGUIs.InvalidInputGUI();
-            iig.errorReport();
+            ErrorGUIs.Popup pu = new ErrorGUIs.Popup();
+            pu.add("Invalid Input!");
+            pu.display();
             ex.getMessage();
         }
         
@@ -339,8 +417,11 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
         }
         catch (Exception ex)
         {
-            ErrorGUIs.DateErrorGUI deg = new ErrorGUIs.DateErrorGUI();
-            deg.reportError();
+            ErrorGUIs.Popup pu = new ErrorGUIs.Popup();
+            pu.add("Input a valid date:");
+            pu.add("mm/dd/yy");
+            pu.add("mm-dd-yy");
+            pu.display();
             System.out.println("setTable() Error!");
         }
         
@@ -349,9 +430,48 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
         dateTextField.setText("");   
     }//GEN-LAST:event_newMenuItemActionPerformed
 
+    private void graphBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graphBtnActionPerformed
+        try
+        {
+            GraphData graph = new GraphData();
+            chartPanel = new ChartPanel(graph.graph(tabMod.getMyData(), tabMod.getNames()));
+            jTabbedPane1.setComponentAt(1, chartPanel);
+        }
+        catch (Exception ex)
+        {
+            ErrorGUIs.Popup pu = new ErrorGUIs.Popup();
+            pu.add("No Data Found!");
+            pu.display();
+        }
+    }//GEN-LAST:event_graphBtnActionPerformed
+
+    private void saveGraphMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveGraphMenuItemActionPerformed
+        try
+        {
+            FileIO fio = new FileIO();
+            fio.saveGraph(tabMod.getDate(), chartPanel.getChart());
+            
+            ErrorGUIs.Popup pu = new ErrorGUIs.Popup();
+            pu.add("Done saving the Chart.");
+            pu.display();
+        }
+        catch (Exception ex)
+        {
+            ErrorGUIs.Popup pu = new ErrorGUIs.Popup();
+            pu.add("Saving the chart Failed!");
+            pu.display();
+        }
+    }//GEN-LAST:event_saveGraphMenuItemActionPerformed
+
+    private void notesTextAreaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_notesTextAreaKeyTyped
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+            evt.consume();
+    }//GEN-LAST:event_notesTextAreaKeyTyped
+
     public void setTable() throws Exception
     {
         dateTextField.setText(tabMod.getDate());
+        notesTextArea.setText(tabMod.getNotes());
         
         for (int i = 0; i < tabMod.getMyData().length; i++)
         {
@@ -396,20 +516,26 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addDataBtn;
     private javax.swing.JButton analyzeBtn;
     private javax.swing.JTextField dateTextField;
-    private javax.swing.JButton garphBtn;
+    private javax.swing.JButton graphBtn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JList jList1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable2;
     private javax.swing.JMenuItem newMenuItem;
+    private javax.swing.JTextArea notesTextArea;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem saveDataMenuItem;
     private javax.swing.JMenuItem saveGraphMenuItem;
