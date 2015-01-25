@@ -437,6 +437,25 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
     private void graphBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graphBtnActionPerformed
         try
         {
+            tabMod.setDate(dateTextField.getText());
+            tabMod.setNotes(notesTextArea.getText());
+            
+            ErrorGUIs.Popup pu = new ErrorGUIs.Popup();
+            pu.add("Added Data Successfully!");
+            pu.display();
+        }
+        catch (Exception ex)
+        {
+            ErrorGUIs.Popup pu = new ErrorGUIs.Popup();
+            pu.add("Input a valid date:");
+            pu.add("mm/dd/yy");
+            pu.add("mm-dd-yy");
+            pu.display();
+            System.out.println("setTable() Error!");
+        }
+        
+        try
+        {
             GraphData graph = new GraphData(tabMod.getDate());
             chartPanel = new ChartPanel(graph.graphVsTime(tabMod.getMyData(), tabMod.getNames()));
             jTabbedPane1.setComponentAt(1, chartPanel);
