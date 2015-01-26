@@ -48,7 +48,9 @@ public class FileIO {
      */
     public void outputToFile(String date, String[][] data, String notes)
     {
-        File f = new File("C:/Program Files/BGDataAnalysis/Data/" + date + ".txt");
+        File f = new File("Resources/Data/" + date + ".txt");
+        // For "commercial" use
+        //File f = new File("C:/Program Files/BGDataAnalysis/Data/" + date + ".txt");
         
         try
         {
@@ -131,8 +133,11 @@ public class FileIO {
     {
             int width=640; // Width of the image 
             int height=480; // Height of the image               
-            File lineChart = new File("C:Program Files/BGDataAnalysis/BGCharts/" 
-                    + date + "Chart.png");
+            File lineChart = new File("Resources/BGCharts/" + date + "Chart.png");
+            
+            // For "commercial" use
+            /*File lineChart = new File("C:Program Files/BGDataAnalysis/BGCharts/" 
+                    + date + "Chart.png");*/
             
             ChartUtilities.saveChartAsPNG(lineChart, jfc, width, height);
 

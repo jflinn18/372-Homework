@@ -7,7 +7,6 @@ package finalproject;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.File;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.UIManager;
@@ -15,7 +14,6 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
 
 /**
  * This is a Blood Glucose Data Analyzer. It takes data in and tells the user,
@@ -38,7 +36,11 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
     // edit that generated code.
     public BloodGlucoseGUI() {
         initComponents();
-        jfc = new JFileChooser("C:\\Program Files\\BGDataAnalysis\\Data");
+        jfc = new JFileChooser("Resources/Data");
+        
+        
+        // For "commercial" use
+        //jfc = new JFileChooser("C:\\Program Files\\BGDataAnalysis\\Data");
         
         tabMod = new MyTableModel();
         jTable2.setModel(tabMod);
@@ -343,28 +345,12 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
      * @param evt 
      */
     private void saveDataMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveDataMenuItemActionPerformed
+        FileIO fio = new FileIO();
         try
         {
             tabMod.setDate(dateTextField.getText());
             tabMod.setNotes(notesTextArea.getText());
             
-            ErrorGUIs.Popup pu = new ErrorGUIs.Popup();
-            pu.add("Added Data Successfully!");
-            pu.display();
-        }
-        catch (Exception ex)
-        {
-            ErrorGUIs.Popup pu = new ErrorGUIs.Popup();
-            pu.add("Input a valid date:");
-            pu.add("mm/dd/yy");
-            pu.add("mm-dd-yy");
-            pu.display();
-            System.out.println("setTable() Error!");
-        }
-        
-        FileIO fio = new FileIO();
-        try
-        {
             fio.outputToFile(tabMod.getDate(), tabMod.getMyData(), tabMod.getNotes());
             
             ErrorGUIs.Popup pu = new ErrorGUIs.Popup();

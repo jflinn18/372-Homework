@@ -148,7 +148,9 @@ public class AnalyzeData {
         
         for (int i = 0; i < history.length; i++)
         {
-            history[i] = new File("C:/Program Files/BGDataAnalysis/Data/" + days[i] + ".txt");
+            history[i] = new File("Resources/Data/" + days[i] + ".txt");
+            // For "commercial" use
+            //history[i] = new File("C:/Program Files/BGDataAnalysis/Data/" + days[i] + ".txt");
         }
     }
     
