@@ -14,6 +14,7 @@ public class Rectangle extends Shape{
 	 */
 	public Rectangle(int width, int height) throws IllegalArgumentException
 	{
+		//PT -- width <= 0. Negative distance don't make sense. -2
 		if (width == 0 || height == 0)
 			throw new IllegalArgumentException("This is not a rectangle");
 		

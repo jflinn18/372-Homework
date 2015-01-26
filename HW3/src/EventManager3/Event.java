@@ -153,6 +153,7 @@ public class Event {
        @Override
         public int compare(Object o1, Object o2)
         {
+            //PT -- What if o1 or o2 aren't Events?
             Event e1 = (Event)o1;
             Event e2 = (Event)o2;
             
@@ -190,6 +191,7 @@ public class Event {
             Event e1 = (Event)o1;
             Event e2 = (Event)o2;
             
+            //PT -- you don't even need comp here ...
             int comp;
             if (e1.getYear() > e2.getYear())
                 return -1;
