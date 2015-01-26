@@ -35,6 +35,8 @@ public class GetInput {
 		{
 			try 
 			{
+				//PT -- generally try to separate the UI from the logic. So I would expect this
+				//      code in UserInput.java -2
 				System.out.print("Enter an integer: ");
 				list.add(scan.nextInt());
 			}

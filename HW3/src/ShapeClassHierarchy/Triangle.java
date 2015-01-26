@@ -15,6 +15,7 @@ public class Triangle extends Shape{
 	 */
 	public Triangle(int s1, int s2, int s3) throws IllegalArgumentException
 	{
+		//PT -- also need to check for <= 0
 		if (s1+s2 <= s3 || s1+s3 <= s2 || s2+s3 <= s1)
 			throw new IllegalArgumentException("This is not a triangle.");
 		
