@@ -30,7 +30,13 @@ public class AnalyzeData {
     public AnalyzeData(String[][] data, String date)
     {
         this.date = date;
+        //PT -- why arrays here, and not ArrayLists?
         history = new File[7];
+        //PT -- all of this seems pretty rigid. Your user has to report every hour, and limited to two weeks.
+        //  If you wanted to allow reporting on the half-hour, or every three hours, you'd have to change the code
+        //  There are ways to make this much more flexible.
+        // Also, I wonder if String for data is the right type. A Data class could be more flexible, and you'd be
+        //  able to add more information on each report
         weeksData = new String[7][24][2];
         lows = new int[24];
         highs = new int[24];
