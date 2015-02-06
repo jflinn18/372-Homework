@@ -136,11 +136,11 @@ public class RestaurantListEditor extends javax.swing.JFrame {
         try
         {
             if (jTextArea1.getText().contains("%"))
-                throw new Exception();
+                throw new Exception(); //PT -- if you're throwing a generic exception, there should be a message of some sort
             if (jTextArea1.getText().equals("") || 
                     nameTextField.getText().equals("") || 
                     addressTextField.getText().equals(""))
-                throw new IOException();
+                throw new IOException(); //PT -- good
                 
             Restaurant rest = new Restaurant(nameTextField.getText(), 
                     addressTextField.getText(), jTextArea1.getText(),
@@ -183,7 +183,7 @@ public class RestaurantListEditor extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex) {//PT -- good
             java.util.logging.Logger.getLogger(RestaurantListEditor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(RestaurantListEditor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
