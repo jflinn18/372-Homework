@@ -28,7 +28,7 @@ public class Restaurant {
         this.name = name;
         this.address = address;
         this.notes = notes;
-        this.stars = stars;
+        this.stars = stars; //PT -- should check here that stars is in [1,5]
     }
     
     /**
@@ -124,5 +124,5 @@ public class Restaurant {
      * Sets the number of stars
      * @param i 
      */
-    public void setStars(int i) { stars = i; }
+    public void setStars(int i) { stars = i; } //PT -- and a check here that i is in [1,5]
 }
