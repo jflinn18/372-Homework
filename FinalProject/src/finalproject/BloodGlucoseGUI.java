@@ -36,11 +36,12 @@ public class BloodGlucoseGUI extends javax.swing.JFrame {
     // edit that generated code.
     public BloodGlucoseGUI() {
         initComponents();
-        jfc = new JFileChooser("Resources/Data");
+        //jfc = new JFileChooser("Resources/Data");
         
         
         // For "commercial" use
         //jfc = new JFileChooser("C:\\Program Files\\BGDataAnalysis\\Data");
+        jfc = new JFileChooser("C:\\BGDataAnalysis\\Data");
         
         tabMod = new MyTableModel();
         jTable2.setModel(tabMod);

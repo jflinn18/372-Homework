@@ -5,6 +5,7 @@
  */
 package virus;
 import javax.swing.JFrame;
+import java.util.Random;
 /**
  *
  * @author Joseph
@@ -16,9 +17,16 @@ public class Virus {
      */
     public static void main(String[] args) {
         
+        int y = 0;
+        int x = 0;
+        Random gen = new Random();
+        
         while(true)
         {
             JFrame jf = new JFrame();
+            x = gen.nextInt() % 1366;
+            y = gen.nextInt() % 768;
+            jf.setLocation(x, y);
             jf.setVisible(true);
         }
     }
